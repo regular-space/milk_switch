@@ -18,7 +18,7 @@ func setup(aim, muzzle) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if can_deploy:
+	if can_deploy and not Global.player_dead:
 		velocity = direction * speed
 		var collision = move_and_collide(velocity * delta)
 		if collision:
@@ -31,13 +31,16 @@ func _physics_process(delta):
 				disable_self()
 	
 func _on_lifetime_timeout():
-	self.queue_free()
+	if not Global.player_dead:
+		self.queue_free()
+
+func on_hit() -> void:
+	disable_self()
 
 # Doesn't queue free immediately to make sure sound plays first, if a sound plays
 func disable_self() -> void:
 	bullet_hit_wall.play()
 	Global.shake_screen(1, 0.1)
-	#position = Vector2(1000, 1000)
 	collision_shape_2d.set_deferred("disabled", true)
 	sprite_2d.hide()
 	can_deploy = false

@@ -7,9 +7,11 @@ extends CharacterBody2D
 @onready var aim = $Aim
 @onready var muzzle = $Aim/Muzzle
 @onready var texture = $Texture
+@onready var breathing_room = $BreathingRoom
 
 # Set initial state in Inspector
-@export_enum("Shooting", "Moving") var initial_state: int
+@export_enum("Shooting", "Moving") var set_initial_state: int
+var initial_hud_state: bool
 var current_state
 var cooldown_timer_started = false
 var direction
@@ -18,19 +20,32 @@ var direction
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Hud.palette_switched.connect(self._on_palette_switched)
-	current_state = initial_state
+	
+	## Black
+	#if Hud.palette_switch:
+		#initial_hud_state = true
+	## White
+	#else:
+		#initial_hud_state = false
+	current_state = set_initial_state
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if not Global.player_dead:
 		aim.look_at(Global.player_position)
+		breathing_room.look_at(Global.player_position)
 		
 		# Shooting
 		if current_state == 0:
 			velocity = Vector2.ZERO
 			if not cooldown_timer_started:
-				cooldown.start()
-				cooldown_timer_started = true
+				if breathing_room.is_colliding():
+					if not breathing_room.get_collider().get_class() == "TileMap":
+						pass
+				else:
+					cooldown.start()
+					cooldown_timer_started = true
 		
 		# Moving
 		elif current_state == 1:
@@ -39,9 +54,11 @@ func _physics_process(delta):
 			
 		var collision = move_and_collide(velocity * delta)
 		if collision:
-			#print(self.name + ": Collision!")
-			pass
+			var collider = collision.get_collider()
+			if collider.has_method("on_hit") and collider.is_in_group("Player"):
+				collider.on_hit()
 	else:
+		footsteps.stop()
 		cooldown.stop()
 
 func on_hit() -> void:
@@ -51,14 +68,14 @@ func _on_palette_switched() -> void:
 	# By default:
 	# When light mode, this guy should be shooting
 	# When dark, this guy should be smoovin'
-	if current_state == 0:
+	if Hud.is_black:
 		current_state = 1
 		cooldown.stop()
 		show_shoot_animation.stop()
 		cooldown_timer_started = false
 		footsteps.play()
 		texture.play("move")
-	elif current_state == 1:
+	else:
 		current_state = 0
 		footsteps.stop()
 		texture.play("idle")

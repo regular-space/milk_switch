@@ -12,7 +12,10 @@ func _ready():
 func _physics_process(delta):
 	Global.player_position = self.position
 	if Input.is_action_just_pressed("restart"):
-		Global.change_room(owner.room, 1)
+		var new_current_scene = Global.current_room_pack.instantiate()
+		Global.change_room(new_current_scene, 1)
+		if Hud.is_black:
+			switch_milk_pressed.emit()
 	
 	if not Global.player_dead:
 		if Input.is_action_just_pressed("switch_milk"):

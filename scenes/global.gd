@@ -9,6 +9,7 @@ var shake_screen_intensity: float
 
 var current_camera: Camera2D
 var current_room: Node2D
+var current_room_pack
 
 var player_position: Vector2
 var player_dead = false
@@ -22,14 +23,16 @@ func _process(delta):
 
 func change_room(destination_room, fade_speed) -> void:
 	current_room.queue_free()
-	var new_room = destination_room.instantiate()
-	get_node("/root/").add_child(new_room)
+	get_tree().root.add_child(destination_room)
+	player_dead = false
 
 func _on_ready_camera(camera) -> void:
 	current_camera = camera
 	
 func _on_ready_room(room) -> void:
 	current_room = room
+	if current_room.name == "KevLevelA":
+		current_room_pack = preload("res://scenes/rooms/kev_level_a.tscn")
 
 func shake_screen(intensity: float, length: float) -> void:
 	shake_screen_intensity = intensity

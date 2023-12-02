@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcynls8s0u5rl"]
+[gd_scene load_steps=3 format=3 uid="uid://dcynls8s0u5rl"]
 
 [ext_resource type="AudioStream" uid="uid://bd3r7jtuw6k07" path="res://sounds/267341__coolguy244e__bullet-hit_edit.mp3" id="1_hj6ob"]
+[ext_resource type="Script" path="res://scenes/sound_nodes/bullet_hit_wall.gd" id="2_4pf7m"]
 
 [node name="BulletHitWall" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_hj6ob")
 volume_db = -10.0
 bus = &"Sounds"
+script = ExtResource("2_4pf7m")

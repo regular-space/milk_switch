@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-var palette_switch = false
+# False = white, True = black
+var is_black = false
 signal palette_switched
 
 # Called when the node enters the scene tree for the first time.
@@ -12,6 +13,6 @@ func _process(delta):
 	pass
 
 func _on_switch_milk_pressed() -> void:
-	$PaletteSwitcher.material.set_shader_parameter("on", palette_switch)
-	palette_switch = not palette_switch
+	$PaletteSwitcher.material.set_shader_parameter("on", is_black)
+	is_black = not is_black
 	palette_switched.emit()

@@ -78,5 +78,8 @@ position = Vector2(10, 0)
 
 [node name="Footsteps" parent="." instance=ExtResource("4_l2hfj")]
 
+[node name="BreathingRoom" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
+
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="ShowShootAnimation" to="." method="_on_show_shoot_animation_timeout"]
