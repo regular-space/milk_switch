@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2sxhee755f03"]
+[gd_scene load_steps=3 format=3 uid="uid://d2sxhee755f03"]
 
 [ext_resource type="Script" path="res://scenes/audio.gd" id="1_l5ew1"]
+[ext_resource type="AudioStream" uid="uid://c5x1w280b6mda" path="res://sounds/381798__haxxar__e3ko.wav" id="2_f5eem"]
 
-[node name="Audio" type="AudioStreamPlayer2D"]
+[node name="Audio" type="Node2D"]
 script = ExtResource("1_l5ew1")
+
+[node name="Moo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_f5eem")
+bus = &"Sounds"
+
+[connection signal="finished" from="Moo" to="." method="_on_moo_finished"]

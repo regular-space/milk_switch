@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3m5v68o6614"]
+[gd_scene load_steps=5 format=3 uid="uid://b3m5v68o6614"]
 
 [ext_resource type="Script" path="res://scenes/objects/bullet.gd" id="1_xjoow"]
 [ext_resource type="Texture2D" uid="uid://d34p2167l2bs" path="res://textures/bullet.png" id="2_e3pey"]
+[ext_resource type="PackedScene" uid="uid://dcynls8s0u5rl" path="res://scenes/sound_nodes/bullet_hit_wall.tscn" id="3_3gy2j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ye1u"]
 radius = 2.0
@@ -18,5 +19,7 @@ shape = SubResource("CircleShape2D_0ye1u")
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="BulletHitWall" parent="." instance=ExtResource("3_3gy2j")]
 
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

@@ -11,30 +11,39 @@ func _ready():
 
 func _physics_process(delta):
 	Global.player_position = self.position
+	if Input.is_action_just_pressed("restart"):
+		Global.change_room(owner.room, 1)
 	
-	if Input.is_action_just_pressed("switch_milk"):
-		switch_milk_pressed.emit()
-	
-	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
-	if direction:
-		# Animation
-		if direction.y < 0:
-			$AnimatedSprite2D.play("up")
-		elif direction.y > 0:
-			$AnimatedSprite2D.play("down")
-		elif direction.x > 0:
-			$AnimatedSprite2D.play("right")
-		elif direction.x < 0:
-			$AnimatedSprite2D.play("left")
-		
-		velocity = direction * speed
+	if not Global.player_dead:
+		if Input.is_action_just_pressed("switch_milk"):
+			Audio.moo.play()
+			Global.shake_screen(1, 0.2)
+			switch_milk_pressed.emit()
+			
+		var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
+		if direction:
+			# Animation
+			if direction.y < 0:
+				$AnimatedSprite2D.play("up")
+			elif direction.y > 0:
+				$AnimatedSprite2D.play("down")
+			elif direction.x > 0:
+				$AnimatedSprite2D.play("right")
+			elif direction.x < 0:
+				$AnimatedSprite2D.play("left")
+			
+			velocity = direction * speed
+		else:
+			velocity = Vector2(move_toward(velocity.x, 0, deceleration), move_toward(velocity.y, 0, deceleration))
 	else:
-		velocity = Vector2(move_toward(velocity.x, 0, deceleration), move_toward(velocity.y, 0, deceleration))
-		
+		velocity = Vector2.ZERO
+			
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		if collision.get_collider().has_method("push_block"):
 			var block = collision.get_collider()
 			block.push_block(position)
 		#print("Collision")
-	
+
+func on_hit() -> void:
+	Global.player_dead = true

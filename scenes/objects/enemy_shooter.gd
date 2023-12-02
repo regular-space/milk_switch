@@ -1,33 +1,51 @@
 extends CharacterBody2D
 
+@onready var gunshot = $Gunshot
+@onready var footsteps = $Footsteps
+@onready var cooldown = $Cooldown
+@onready var show_shoot_animation = $ShowShootAnimation
+@onready var aim = $Aim
+@onready var muzzle = $Aim/Muzzle
+@onready var texture = $Texture
+
 # Set initial state in Inspector
-@export_enum("Shooting", "Moving") var state: int
+@export_enum("Shooting", "Moving") var initial_state: int
 var current_state
 var cooldown_timer_started = false
+var direction
+@export var speed = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Hud.palette_switched.connect(self._on_palette_switched)
-	current_state = state
+	current_state = initial_state
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	$Aim.look_at(Global.player_position)
-	
-	# Shooting
-	if current_state == 0:
-		velocity = Vector2.ZERO
-		if not cooldown_timer_started:
-			$Cooldown.start()
-			cooldown_timer_started = true
-	
-	# Moving
-	elif current_state == 1:
-		velocity = Vector2.ZERO
+	if not Global.player_dead:
+		aim.look_at(Global.player_position)
 		
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		print(self.name + ": Collision!")
+		# Shooting
+		if current_state == 0:
+			velocity = Vector2.ZERO
+			if not cooldown_timer_started:
+				cooldown.start()
+				cooldown_timer_started = true
+		
+		# Moving
+		elif current_state == 1:
+			direction = Vector2.RIGHT.rotated(aim.rotation)
+			velocity = direction * speed
+			
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			#print(self.name + ": Collision!")
+			pass
+	else:
+		cooldown.stop()
+
+func on_hit() -> void:
+	self.queue_free()
 
 func _on_palette_switched() -> void:
 	# By default:
@@ -35,26 +53,32 @@ func _on_palette_switched() -> void:
 	# When dark, this guy should be smoovin'
 	if current_state == 0:
 		current_state = 1
-		$Cooldown.stop()
-		$ShowShootAnimation.stop()
+		cooldown.stop()
+		show_shoot_animation.stop()
 		cooldown_timer_started = false
-		$AnimatedSprite2D.play("move")
+		footsteps.play()
+		texture.play("move")
 	elif current_state == 1:
 		current_state = 0
-		$AnimatedSprite2D.play("idle")
+		footsteps.stop()
+		texture.play("idle")
 		
 func _on_cooldown_timeout():
 	shoot_bullet()
 
 func shoot_bullet() -> void:
-	$AnimatedSprite2D.play("shoot")
-	
+	texture.play("shoot")
+	gunshot.play()
 	var new_bullet = Global.bullet.instantiate()
-	new_bullet.setup($Aim, $Aim/Muzzle)
+	new_bullet.setup(aim, muzzle)
 	owner.add_child(new_bullet)
 	
-	$ShowShootAnimation.start()
+	show_shoot_animation.start()
 
 func _on_show_shoot_animation_timeout():
-	$AnimatedSprite2D.play("idle")
-	$Cooldown.start()
+	texture.play("idle")
+	cooldown.start()
+
+
+func _on_gunshot_finished():
+	gunshot.stop()

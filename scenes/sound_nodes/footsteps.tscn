@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://csopnnf6fjlr4"]
+
+[ext_resource type="AudioStream" uid="uid://dtkwxtw6mf7he" path="res://sounds/520746__nathanchurchyard__footstep.mp3" id="1_hnho1"]
+[ext_resource type="Script" path="res://scenes/sound_nodes/footsteps.gd" id="2_flttn"]
+
+[node name="Footsteps" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_hnho1")
+script = ExtResource("2_flttn")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

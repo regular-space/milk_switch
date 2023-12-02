@@ -2,5 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/global.gd" id="1_qwtg8"]
 
-[node name="Global" type="Node2D"]
+[node name="Global" type="Node2D" node_paths=PackedStringArray("shake_screen_timer")]
 script = ExtResource("1_qwtg8")
+shake_screen_timer = NodePath("ShakeScreenTimer")
+
+[node name="ShakeScreenTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ShakeScreenTimer" to="." method="_on_shake_screen_timer_timeout"]
