@@ -545,8 +545,13 @@ shape = SubResource("RectangleShape2D_3s8wj")
 [node name="BlockSprite" type="Sprite2D" parent="BlockAnimatedBody"]
 texture = ExtResource("5_lw4d1")
 
-[node name="BlockPushTimer" type="Timer" parent="BlockAnimatedBody"]
+[node name="PushTimer" type="Timer" parent="BlockAnimatedBody"]
 wait_time = 0.75
 one_shot = true
 
-[connection signal="timeout" from="BlockAnimatedBody/BlockPushTimer" to="BlockAnimatedBody" method="_on_block_push_timer_timeout"]
+[node name="ConfirmPushTimer" type="Timer" parent="BlockAnimatedBody"]
+wait_time = 0.27
+one_shot = true
+
+[connection signal="timeout" from="BlockAnimatedBody/PushTimer" to="BlockAnimatedBody" method="_on_block_push_timer_timeout"]
+[connection signal="timeout" from="BlockAnimatedBody/ConfirmPushTimer" to="BlockAnimatedBody" method="_on_confirm_push_timer_timeout"]
