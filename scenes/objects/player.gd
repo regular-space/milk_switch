@@ -22,3 +22,4 @@ func _physics_process(delta):
 		velocity = Vector2(move_toward(velocity.x, 0, deceleration), move_toward(velocity.y, 0, deceleration))
 		
 	move_and_slide()
+	
