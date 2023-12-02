@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dcynls8s0u5rl" path="res://scenes/sound_nodes/bullet_hit_wall.tscn" id="3_3gy2j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ye1u"]
-radius = 2.0
+radius = 1.0
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_xjoow")
