@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3m5v68o6614"]
+
+[ext_resource type="Script" path="res://scenes/objects/bullet.gd" id="1_xjoow"]
+[ext_resource type="Texture2D" uid="uid://d34p2167l2bs" path="res://textures/bullet.png" id="2_e3pey"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ye1u"]
+radius = 2.0
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_xjoow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_e3pey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ye1u")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

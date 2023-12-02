@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://vr8pfvd6ha6c"]
+
+[ext_resource type="Texture2D" uid="uid://cbdfv1dqmv11v" path="res://textures/enemy_shooter.png" id="1_33yhg"]
+[ext_resource type="Script" path="res://scenes/objects/enemy_shooter.gd" id="1_45v5n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32kn6"]
+atlas = ExtResource("1_33yhg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88djo"]
+atlas = ExtResource("1_33yhg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tjju"]
+atlas = ExtResource("1_33yhg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cacrw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32kn6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88djo")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tjju")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p24vg"]
+radius = 5.0
+height = 10.0
+
+[node name="EnemyShooter" type="CharacterBody2D"]
+script = ExtResource("1_45v5n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cacrw")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_p24vg")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShowShootAnimation" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Aim" type="Line2D" parent="."]
+points = PackedVector2Array(10, 0, 0, 0)
+width = 1.0
+default_color = Color(0.121569, 0.443137, 0.792157, 1)
+
+[node name="Muzzle" type="Marker2D" parent="Aim"]
+position = Vector2(10, 0)
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="ShowShootAnimation" to="." method="_on_show_shoot_animation_timeout"]

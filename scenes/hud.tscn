@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://db22leq3g5838"]
+[gd_scene load_steps=5 format=3 uid="uid://db22leq3g5838"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_1ysl4"]
+[ext_resource type="Shader" path="res://shaders/flip_palette.gdshader" id="2_jklpr"]
+[ext_resource type="Script" path="res://scenes/PaletteSwitcher.gd" id="3_arp20"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ahpws"]
+shader = ExtResource("2_jklpr")
+shader_parameter/on = true
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1ysl4")
+
+[node name="PaletteSwitcher" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ahpws")
+offset_left = -346.0
+offset_top = -162.0
+offset_right = 390.0
+offset_bottom = 270.0
+script = ExtResource("3_arp20")
