@@ -520,33 +520,28 @@ layer_0/tile_data = PackedInt32Array(-131078, 65536, 1, -131077, 65536, 1, -1966
 
 [node name="Player" parent="." instance=ExtResource("1_ed71m")]
 position = Vector2(-100, 6)
-collision_mask = 7
+collision_layer = 3
+collision_mask = 3
 
 [node name="PaletteSwitcherGroup" type="CanvasLayer" parent="."]
 
 [node name="PaletteSwitcher" type="ColorRect" parent="PaletteSwitcherGroup"]
 material = SubResource("ShaderMaterial_4wgac")
-offset_left = -405.0
-offset_top = -184.0
-offset_right = 331.0
-offset_bottom = 248.0
+offset_left = -346.0
+offset_top = -162.0
+offset_right = 390.0
+offset_bottom = 270.0
 script = ExtResource("4_pskaa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, 4)
 
-[node name="BlockAnimatedBody" type="AnimatableBody2D" parent="."]
+[node name="Block" type="CharacterBody2D" parent="."]
 position = Vector2(-34, 42)
 script = ExtResource("6_fg4x5")
 
-[node name="BlockCollision" type="CollisionShape2D" parent="BlockAnimatedBody"]
+[node name="BlockCollision" type="CollisionShape2D" parent="Block"]
 shape = SubResource("RectangleShape2D_3s8wj")
 
-[node name="BlockSprite" type="Sprite2D" parent="BlockAnimatedBody"]
+[node name="BlockSprite" type="Sprite2D" parent="Block"]
 texture = ExtResource("5_lw4d1")
-
-[node name="BlockPushTimer" type="Timer" parent="BlockAnimatedBody"]
-wait_time = 0.75
-one_shot = true
-
-[connection signal="timeout" from="BlockAnimatedBody/BlockPushTimer" to="BlockAnimatedBody" method="_on_block_push_timer_timeout"]
