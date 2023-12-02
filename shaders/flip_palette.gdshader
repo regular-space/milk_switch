@@ -8,7 +8,7 @@ const vec3 color2 = vec3(110.0,64.0,52.0)/255.0;
 const vec3 color3 = vec3(158.0,82.0,61.0)/255.0;
 
 const vec3 white = vec3(1.0,1.0,1.0);
-const vec3 grey = vec3(128,128,128)/255.0;
+const vec3 grey = vec3(170,170,170)/255.0;
 const vec3 black = vec3(0.0,0.0,0.0);
 
 // Changes colour
