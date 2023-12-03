@@ -25,6 +25,8 @@ Hud="*res://scenes/hud.tscn"
 
 window/size/viewport_width=384
 window/size/viewport_height=216
+window/size/initial_position_type=2
+window/size/initial_screen=1
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
@@ -77,3 +79,4 @@ restart={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true

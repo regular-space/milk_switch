@@ -5,6 +5,7 @@ signal switch_milk_pressed
 
 @export var speed: int = 75
 @export var deceleration: int = 50
+var direction: Vector2
 
 func _ready():
 	switch_milk_pressed.connect(Hud._on_switch_milk_pressed)
@@ -43,9 +44,10 @@ func _physics_process(delta):
 			
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		if collision.get_collider().has_method("push_block"):
-			var block = collision.get_collider()
-			block.push_block(position)
+		var collision_obj = collision.get_collider()
+		if collision_obj.has_method("push") and not collision_obj.is_moving:
+			var pushable_obj = collision.get_collider()
+			pushable_obj.push(velocity)
 		#print("Collision")
 
 func on_hit() -> void:
