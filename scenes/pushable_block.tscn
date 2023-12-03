@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s8wj"]
 size = Vector2(16, 16)
 
-[node name="PushableBlockBody" type="AnimatableBody2D"]
+[node name="PushableBlockBody" type="AnimatableBody2D" groups=["pushable_obj"]]
 position = Vector2(-34, 42)
 disable_mode = 2
 collision_layer = 4
