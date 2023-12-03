@@ -58,9 +58,7 @@ func stop() -> void:
 	move_dir = Vector2.ZERO
 	is_moving = false
 	allow_move = false
-	# This code here just snaps the position to a integer value because 
-	# sometimes when it is a decimal the screen position is off by a pixel
-	print(position)
+	
 
 func is_block_blocked_by_block(direction: Vector2) -> bool:
 	match direction:
@@ -85,7 +83,7 @@ func _physics_process(delta):
 		var collision = move_and_collide(move_vec)
 		snap_pos = true
 		if collision:
-			# If colliding into the wall no snapping necessary
+			# If colliding into the wall no pixel snapping necessary
 			if collision.get_collider().is_class("TileMap"):
 				snap_pos = false
 		
@@ -95,7 +93,7 @@ func _on_block_push_timer_timeout():
 	# because I keep coming across problems with the visuals since movement is 
 	# done in done in floats there's a sort of desync between the actual position 
 	# and the displayed pixels. Sort of how subpixels work but in a bad way.
-	if snap_pos:
+	if snap_pos == true:
 		match move_dir:
 			up:
 				position = Vector2(inital_pos.x,inital_pos.y - 16)
@@ -108,7 +106,7 @@ func _on_block_push_timer_timeout():
 	stop()
 	
 func _on_confirm_push_timer_timeout():
-	# Are any of the move actions held
+	# Are any of the move actions held? Up,Down,left or right?
 	var any_move_actions_held = Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down")
 	if any_move_actions_held:
 		allow_move = true

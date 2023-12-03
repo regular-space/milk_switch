@@ -531,8 +531,7 @@ script = ExtResource("4_pskaa")
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, 4)
 
-[node name="PushableBlockBody" parent="." instance=ExtResource("5_bx6dm")]
-position = Vector2(-18, 42)
-
 [node name="PushableBlockBody2" parent="." instance=ExtResource("5_bx6dm")]
-position = Vector2(-2, 42)
+position = Vector2(-18, 26)
+
+[node name="PushableBlockBody" parent="." instance=ExtResource("5_bx6dm")]
