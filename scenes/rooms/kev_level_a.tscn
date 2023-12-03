@@ -30,4 +30,11 @@ position = Vector2(-70, 97)
 collision_mask = 7
 
 [node name="PushableBlockBody" parent="." instance=ExtResource("6_7oefp")]
-position = Vector2(-101, 57)
+position = Vector2(-141, 16)
+
+[node name="PushableBlockBody3" parent="." instance=ExtResource("6_7oefp")]
+position = Vector2(-99, 59)
+
+[node name="PushableBlockBody2" parent="." instance=ExtResource("6_7oefp")]
+position = Vector2(-181, 16)
+milk_switched = true

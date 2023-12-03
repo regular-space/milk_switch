@@ -16,6 +16,9 @@ var is_moving := false
 var allow_move := false
 var snap_pos := true
 
+func _ready():
+	Hud.palette_switched.connect(self._on_palette_switched)
+
 func push(direction: Vector2):
 	inital_pos = Vector2(int(position.x),int(position.y))
 	# Checking which is the greater value for direction and using that. Because
