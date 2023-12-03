@@ -21,12 +21,15 @@ func _physics_process(delta):
 		velocity = direction * speed
 	else:
 		velocity = Vector2(move_toward(velocity.x, 0, deceleration), move_toward(velocity.y, 0, deceleration))
-		
-	var collision = move_and_collide(velocity * delta)
+	
+	# Test move_and_collide to check if moving would make us collide without
+	# actually moving
+	var collision = move_and_collide(velocity * delta,true)
 	if collision:
 		print(collision.get_collider().get_class())
 		# For objects that can be pushed
-		if collision.get_collider().has_method("push"):
+		if collision.get_collider().has_method("push") and not collision.get_collider().is_moving:
 			var pushable_obj = collision.get_collider()
 			pushable_obj.push(velocity)
-	
+	else:
+		move_and_collide(velocity * delta)

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcvn5y2x4ee7t"]
+
+[ext_resource type="Script" path="res://scenes/moveable_block.gd" id="1_kqjbn"]
+[ext_resource type="Texture2D" uid="uid://2wt7dr5eyfao" path="res://textures/block_1.png" id="2_to5lw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s8wj"]
+size = Vector2(16, 16)
+
+[node name="PushableBlockBody" type="AnimatableBody2D"]
+position = Vector2(-34, 42)
+script = ExtResource("1_kqjbn")
+
+[node name="BlockCollision" type="CollisionShape2D" parent="."]
+scale = Vector2(0.992, 0.992)
+shape = SubResource("RectangleShape2D_3s8wj")
+one_way_collision_margin = 0.0
+
+[node name="BlockSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_to5lw")
+
+[node name="PushTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="ConfirmPushTimer" type="Timer" parent="."]
+wait_time = 0.27
+one_shot = true
+
+[connection signal="timeout" from="PushTimer" to="." method="_on_block_push_timer_timeout"]
+[connection signal="timeout" from="ConfirmPushTimer" to="." method="_on_confirm_push_timer_timeout"]

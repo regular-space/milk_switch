@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://biugwhd4kbu36"]
+[gd_scene load_steps=9 format=3 uid="uid://biugwhd4kbu36"]
 
 [ext_resource type="Texture2D" uid="uid://b6efa7bnasfme" path="res://textures/wip_tiles1.png" id="1_0r62v"]
 [ext_resource type="PackedScene" uid="uid://dgycd23hcjdf8" path="res://scenes/objects/player.tscn" id="1_ed71m"]
 [ext_resource type="Shader" path="res://shaders/flip_palette.gdshader" id="3_b3svu"]
 [ext_resource type="Script" path="res://scenes/PaletteSwitcher.gd" id="4_pskaa"]
-[ext_resource type="Texture2D" uid="uid://2wt7dr5eyfao" path="res://textures/block_1.png" id="5_lw4d1"]
-[ext_resource type="Script" path="res://scenes/moveable_block.gd" id="6_fg4x5"]
+[ext_resource type="PackedScene" uid="uid://bcvn5y2x4ee7t" path="res://scenes/pushable_block.tscn" id="5_bx6dm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohi5j"]
 texture = ExtResource("1_0r62v")
@@ -502,9 +501,6 @@ sources/0 = SubResource("TileSetAtlasSource_ohi5j")
 shader = ExtResource("3_b3svu")
 shader_parameter/on = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s8wj"]
-size = Vector2(16, 16)
-
 [node name="ExampleLevel" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -535,23 +531,8 @@ script = ExtResource("4_pskaa")
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, 4)
 
-[node name="BlockAnimatedBody" type="AnimatableBody2D" parent="."]
-position = Vector2(-34, 42)
-script = ExtResource("6_fg4x5")
+[node name="PushableBlockBody" parent="." instance=ExtResource("5_bx6dm")]
+position = Vector2(-18, 42)
 
-[node name="BlockCollision" type="CollisionShape2D" parent="BlockAnimatedBody"]
-shape = SubResource("RectangleShape2D_3s8wj")
-
-[node name="BlockSprite" type="Sprite2D" parent="BlockAnimatedBody"]
-texture = ExtResource("5_lw4d1")
-
-[node name="PushTimer" type="Timer" parent="BlockAnimatedBody"]
-wait_time = 0.75
-one_shot = true
-
-[node name="ConfirmPushTimer" type="Timer" parent="BlockAnimatedBody"]
-wait_time = 0.27
-one_shot = true
-
-[connection signal="timeout" from="BlockAnimatedBody/PushTimer" to="BlockAnimatedBody" method="_on_block_push_timer_timeout"]
-[connection signal="timeout" from="BlockAnimatedBody/ConfirmPushTimer" to="BlockAnimatedBody" method="_on_confirm_push_timer_timeout"]
+[node name="PushableBlockBody2" parent="." instance=ExtResource("5_bx6dm")]
+position = Vector2(-2, 42)
