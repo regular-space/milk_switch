@@ -18,8 +18,8 @@ var is_changing_scene = false
 
 func _process(delta):
 	if can_shake_screen:
-		current_camera.offset = Vector2(randf_range(-shake_screen_intensity, shake_screen_intensity), \
-		randf_range(-shake_screen_intensity, shake_screen_intensity)) + current_camera.default_offset
+		current_camera.offset = Vector2(randi_range(-shake_screen_intensity, shake_screen_intensity), \
+		randi_range(-shake_screen_intensity, shake_screen_intensity)) + current_camera.default_offset
 
 func change_room(destination_room, fade_speed) -> void:
 	current_room.queue_free()
