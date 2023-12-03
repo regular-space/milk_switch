@@ -7,9 +7,13 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ahpws"]
 shader = ExtResource("2_jklpr")
 shader_parameter/on = true
+shader_parameter/color1 = Vector3(56, 23, 36)
+shader_parameter/color2 = Vector3(110, 64, 52)
+shader_parameter/color3 = Vector3(158, 82, 61)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1ysl4")
+palette = Array[Vector3]([Vector3(56, 255, 36), Vector3(129, 255, 45), Vector3(158, 82, 255)])
 
 [node name="PaletteSwitcher" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ahpws")
