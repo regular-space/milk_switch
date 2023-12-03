@@ -491,7 +491,8 @@ texture_region_size = Vector2i(8, 8)
 
 [sub_resource type="TileSet" id="TileSet_2q0pi"]
 tile_size = Vector2i(8, 8)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2147483655
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -516,7 +517,7 @@ layer_0/tile_data = PackedInt32Array(-131078, 65536, 1, -131077, 65536, 1, -1966
 
 [node name="Player" parent="." instance=ExtResource("1_ed71m")]
 position = Vector2(-100, 6)
-collision_mask = 7
+collision_mask = 6
 
 [node name="PaletteSwitcherGroup" type="CanvasLayer" parent="."]
 
@@ -533,5 +534,9 @@ offset = Vector2(0, 4)
 
 [node name="PushableBlockBody2" parent="." instance=ExtResource("5_bx6dm")]
 position = Vector2(-18, 26)
+milk_switched = true
 
 [node name="PushableBlockBody" parent="." instance=ExtResource("5_bx6dm")]
+
+[connection signal="paletteSwitched" from="PaletteSwitcherGroup/PaletteSwitcher" to="PushableBlockBody2" method="_on_palette_switched"]
+[connection signal="paletteSwitched" from="PaletteSwitcherGroup/PaletteSwitcher" to="PushableBlockBody" method="_on_palette_switched"]

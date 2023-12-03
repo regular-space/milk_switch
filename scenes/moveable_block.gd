@@ -86,7 +86,16 @@ func _physics_process(delta):
 			# If colliding into the wall no pixel snapping necessary
 			if collision.get_collider().is_class("TileMap"):
 				snap_pos = false
-		
+			
+func _process(delta):
+	if milk_switched:
+		$BlockSprite.visible = false
+		set_collision_layer_value(3,false)
+		set_collision_layer_value(32,true)
+	else:
+		$BlockSprite.visible = true
+		set_collision_layer_value(32,false)
+		set_collision_layer_value(3,true)
 	
 func _on_block_push_timer_timeout():
 	# Snapping this to the position it should be at (16 px from inital position) 
@@ -113,3 +122,6 @@ func _on_confirm_push_timer_timeout():
 	else:
 		allow_move = false
 
+
+func _on_palette_switched():
+	milk_switched = not milk_switched
