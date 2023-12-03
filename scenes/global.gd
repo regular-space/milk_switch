@@ -22,8 +22,12 @@ func _process(delta):
 		randi_range(-shake_screen_intensity, shake_screen_intensity)) + current_camera.default_offset
 
 func change_room(destination_room, fade_speed) -> void:
-	current_room.queue_free()
-	get_tree().root.add_child(destination_room)
+	var new_scene = destination_room.instantiate()
+	var tween = get_tree().create_tween()
+	tween.tween_property(current_room, "modulate", Color.BLACK, 5)
+	tween.tween_callback(current_room.queue_free)
+	#current_room.queue_free()
+	#get_tree().root.add_child(new_scene)
 	player_dead = false
 
 func _on_ready_camera(camera) -> void:

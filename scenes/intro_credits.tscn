@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dogd3qmiiihed"]
+[gd_scene load_steps=5 format=3 uid="uid://dogd3qmiiihed"]
 
+[ext_resource type="Script" path="res://scenes/intro_credits.gd" id="1_6wq8c"]
 [ext_resource type="FontFile" uid="uid://4hvywokhl6o4" path="res://fonts/Riverbank.ttf" id="1_xed5i"]
 [ext_resource type="FontFile" uid="uid://cr7tti5cr0sv3" path="res://fonts/Plato.ttf" id="2_lqhj0"]
+[ext_resource type="Texture2D" uid="uid://c1wf6yfiijqgm" path="res://textures/title_credits.png" id="4_5m0gs"]
 
 [node name="IntroCredits" type="Node2D"]
+script = ExtResource("1_6wq8c")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 385.0
 offset_bottom = 219.0
 
@@ -14,15 +18,18 @@ wait_time = 2.0
 autostart = true
 
 [node name="TopLabel" type="Label" parent="."]
+visible = false
 offset_left = 121.0
 offset_top = 70.0
 offset_right = 265.0
 offset_bottom = 93.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xed5i")
+theme_override_font_sizes/font_size = 16
 text = "A game by"
 
 [node name="Kevin" type="Label" parent="."]
+visible = false
 offset_left = -35.0
 offset_top = 129.0
 offset_right = 221.0
@@ -35,6 +42,7 @@ regularspace.dev"
 horizontal_alignment = 1
 
 [node name="Ethan" type="Label" parent="."]
+visible = false
 offset_left = 203.0
 offset_top = 130.0
 offset_right = 364.0
@@ -45,3 +53,9 @@ theme_override_font_sizes/font_size = 8
 text = "Ethan Smith
 x.com/modmaster68"
 horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(192, 108)
+texture = ExtResource("4_5m0gs")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
