@@ -49,5 +49,10 @@ hit_from_inside = true
 target_position = Vector2(0, 8)
 collision_mask = 4
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 8.0
+vertices = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
+avoidance_layers = 7
+
 [connection signal="timeout" from="PushTimer" to="." method="_on_block_push_timer_timeout"]
 [connection signal="timeout" from="ConfirmPushTimer" to="." method="_on_confirm_push_timer_timeout"]
