@@ -18,7 +18,7 @@ func setup(aim, muzzle) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if can_deploy and not Global.player_dead:
+	if can_deploy and not Global.disable_actor:
 		velocity = direction * speed
 		var collision = move_and_collide(velocity * delta)
 		if collision:
@@ -31,7 +31,7 @@ func _physics_process(delta):
 				disable_self()
 	
 func _on_lifetime_timeout():
-	if not Global.player_dead:
+	if not Global.disable_actor:
 		self.queue_free()
 
 func on_hit() -> void:

@@ -12,7 +12,7 @@ var current_room: Node2D
 var current_room_pack
 
 var player_position: Vector2
-var player_dead = false
+var disable_actor = false
 
 var is_changing_scene = false
 
@@ -22,13 +22,17 @@ func _process(delta):
 		randi_range(-shake_screen_intensity, shake_screen_intensity)) + current_camera.default_offset
 
 func change_room(destination_room, fade_speed) -> void:
+	disable_actor = true
+	current_room.set_process(false)
+	current_room.set_physics_process(false)
 	var new_scene = destination_room.instantiate()
-	var tween = get_tree().create_tween()
-	tween.tween_property(current_room, "modulate", Color.BLACK, 5)
-	tween.tween_callback(current_room.queue_free)
-	#current_room.queue_free()
-	#get_tree().root.add_child(new_scene)
-	player_dead = false
+	Hud.fade_out(fade_speed)
+	
+	await Hud.animate_black_screen.animation_finished
+	current_room.queue_free()
+	disable_actor = false
+	get_tree().root.add_child(new_scene)
+	Hud.fade_in(fade_speed)
 
 func _on_ready_camera(camera) -> void:
 	current_camera = camera

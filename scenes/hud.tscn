@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://db22leq3g5838"]
+[gd_scene load_steps=9 format=3 uid="uid://db22leq3g5838"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_1ysl4"]
 [ext_resource type="Shader" path="res://shaders/flip_palette.gdshader" id="2_jklpr"]
@@ -11,6 +11,58 @@ shader_parameter/color1 = Vector3(56, 23, 36)
 shader_parameter/color2 = Vector3(110, 64, 52)
 shader_parameter/color3 = Vector3(158, 82, 61)
 
+[sub_resource type="Animation" id="Animation_rdb72"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qgjp4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_okl8v"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yqf6u"]
+_data = {
+"RESET": SubResource("Animation_qgjp4"),
+"fade_in": SubResource("Animation_okl8v"),
+"fade_out": SubResource("Animation_rdb72")
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1ysl4")
 palette = Array[Vector3]([Vector3(56, 23, 36), Vector3(129, 64, 45), Vector3(158, 82, 61)])
@@ -22,3 +74,13 @@ offset_top = -162.0
 offset_right = 390.0
 offset_bottom = 270.0
 script = ExtResource("3_arp20")
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+offset_right = 399.0
+offset_bottom = 230.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimateBlackScreen" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yqf6u")
+}

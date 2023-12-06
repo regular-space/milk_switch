@@ -13,11 +13,12 @@ func _ready():
 func _physics_process(delta):
 	Global.player_position = self.position
 	if Input.is_action_just_pressed("restart"):
-		Global.change_room(Global.current_room_pack, 1)
+		Global.change_room(Global.current_room_pack, 3)
 		if Hud.is_black:
+			await Hud.animate_black_screen.animation_finished
 			switch_milk_pressed.emit()
 	
-	if not Global.player_dead:
+	if not Global.disable_actor:
 		if Input.is_action_just_pressed("switch_milk"):
 			Audio.moo.play()
 			Global.shake_screen(1, 0.2)
@@ -50,4 +51,4 @@ func _physics_process(delta):
 		#print("Collision")
 
 func on_hit() -> void:
-	Global.player_dead = true
+	Global.disable_actor = true

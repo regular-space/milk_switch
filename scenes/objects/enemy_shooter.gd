@@ -32,7 +32,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if not Global.player_dead:
+	if not Global.disable_actor:
 		aim.look_at(Global.player_position)
 		breathing_room.look_at(Global.player_position)
 		
