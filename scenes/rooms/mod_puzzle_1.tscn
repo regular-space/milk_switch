@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwv7786i1c4x2"]
+[gd_scene load_steps=7 format=3 uid="uid://bwv7786i1c4x2"]
 
 [ext_resource type="TileSet" uid="uid://c0n4ksjkjiqr5" path="res://tilesets/wall_tileset.tres" id="1_xm36f"]
 [ext_resource type="PackedScene" uid="uid://c8a23khvs7hil" path="res://scenes/objects/slime_enemy.tscn" id="2_6163w"]
 [ext_resource type="PackedScene" uid="uid://bcvn5y2x4ee7t" path="res://scenes/pushable_block.tscn" id="3_f7bbr"]
+[ext_resource type="PackedScene" uid="uid://dgycd23hcjdf8" path="res://scenes/objects/player.tscn" id="4_m76it"]
+[ext_resource type="PackedScene" uid="uid://wwfwtdm57pv6" path="res://scenes/objects/room_camera.tscn" id="5_2oaoe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rhjrw"]
 vertices = PackedVector2Array(366, 18, 366, 30, 22, 30, 18, 18, 18, 198, 22, 58, 366, 58, 366, 166, 22, 166, 22, 194, 366, 198, 366, 194)
@@ -12,6 +14,13 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 8.0
 
 [node name="ModPuzzle1" type="Node2D"]
+
+[node name="RoomCamera" parent="." instance=ExtResource("5_2oaoe")]
+position = Vector2(193, 103)
+
+[node name="Player" parent="." instance=ExtResource("4_m76it")]
+position = Vector2(17, 109)
+collision_mask = 15
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = ExtResource("1_xm36f")
@@ -29,8 +38,140 @@ movement_target = NodePath("../Marker2D")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(352, 104)
 
-[node name="PushableBlockBody" parent="." instance=ExtResource("3_f7bbr")]
-position = Vector2(177, 82)
+[node name="BlockGroup" type="Node2D" parent="."]
+position = Vector2(42, 58)
+
+[node name="PushableBlockBody" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(0, 0)
+
+[node name="PushableBlockBody2" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(32, 0)
+
+[node name="PushableBlockBody3" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(64, 0)
+
+[node name="PushableBlockBody4" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(96, 0)
+
+[node name="PushableBlockBody5" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(128, 0)
+
+[node name="PushableBlockBody6" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(160, 0)
+
+[node name="PushableBlockBody7" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(192, 0)
+
+[node name="PushableBlockBody8" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(224, 0)
+
+[node name="PushableBlockBody9" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(256, 0)
+
+[node name="PushableBlockBody10" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(288, 0)
+
+[node name="PushableBlockBody11" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(320, 0)
+
+[node name="PushableBlockBody23" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(0, 32)
+
+[node name="PushableBlockBody24" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(32, 32)
+
+[node name="PushableBlockBody25" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(64, 32)
+
+[node name="PushableBlockBody26" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(96, 32)
+
+[node name="PushableBlockBody27" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(128, 32)
+
+[node name="PushableBlockBody28" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(160, 32)
+
+[node name="PushableBlockBody29" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(192, 32)
+
+[node name="PushableBlockBody30" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(224, 32)
+
+[node name="PushableBlockBody31" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(256, 32)
+
+[node name="PushableBlockBody32" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(288, 32)
+
+[node name="PushableBlockBody33" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(320, 32)
+
+[node name="PushableBlockBody45" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(0, 64)
+
+[node name="PushableBlockBody46" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(32, 64)
+
+[node name="PushableBlockBody47" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(64, 64)
+
+[node name="PushableBlockBody48" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(96, 64)
+
+[node name="PushableBlockBody49" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(128, 64)
+
+[node name="PushableBlockBody50" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(160, 64)
+
+[node name="PushableBlockBody51" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(192, 64)
+
+[node name="PushableBlockBody52" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(224, 64)
+
+[node name="PushableBlockBody53" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(256, 64)
+
+[node name="PushableBlockBody54" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(288, 64)
+
+[node name="PushableBlockBody55" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(320, 64)
+
+[node name="PushableBlockBody67" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(0, 96)
+
+[node name="PushableBlockBody68" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(32, 96)
+
+[node name="PushableBlockBody69" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(64, 96)
+
+[node name="PushableBlockBody70" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(96, 96)
+
+[node name="PushableBlockBody71" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(128, 96)
+
+[node name="PushableBlockBody72" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(160, 96)
+
+[node name="PushableBlockBody73" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(192, 96)
+
+[node name="PushableBlockBody74" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(224, 96)
+
+[node name="PushableBlockBody75" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(256, 96)
+
+[node name="PushableBlockBody76" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(288, 96)
+
+[node name="PushableBlockBody77" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
+position = Vector2(320, 96)
 
 [node name="Slime2" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("2_6163w")]
 position = Vector2(364, 195)

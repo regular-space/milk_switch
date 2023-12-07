@@ -82,23 +82,29 @@ func _physics_process(delta):
 		# Stops blocks from pushing each other
 		if is_block_blocked_by_block(move_dir):
 			stop()
+			return
 		var move_vec = Vector2(move_dir * block_speed * delta)
 		var collision = move_and_collide(move_vec)
-		snap_pos = true
+		
 		if collision:
+			print(collision.get_collider().get_class())
 			# If colliding into the wall no pixel snapping necessary
 			if collision.get_collider().is_class("TileMap"):
 				snap_pos = false
+	else:
+		snap_pos = true
 			
 func _process(delta):
 	if milk_switched:
 		$BlockSprite.visible = false
 		set_collision_layer_value(3,false)
 		set_collision_layer_value(32,true)
+		$NavObs2D.set_avoidance_layer_value(3,false)
 	else:
 		$BlockSprite.visible = true
 		set_collision_layer_value(32,false)
 		set_collision_layer_value(3,true)
+		$NavObs2D.set_avoidance_layer_value(3,true)
 	
 func _on_block_push_timer_timeout():
 	# Snapping this to the position it should be at (16 px from inital position) 
