@@ -22,8 +22,10 @@ func _physics_process(delta):
 	# doing anything in the phys_process func
 	if nav_agent.is_navigation_finished():
 		return
+	
 	var current_agent_pos: Vector2 = global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
+	set_move_target(movement_target.position)
 	# Using vector to math here to get a vector pointing towards the next
 	# position provided by the navigation system
 	var direction := (next_path_position - current_agent_pos)

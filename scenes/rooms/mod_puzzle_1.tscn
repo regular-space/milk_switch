@@ -33,146 +33,287 @@ navigation_layers = 15
 
 [node name="Slime" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("2_6163w")]
 position = Vector2(361, 24)
-movement_target = NodePath("../Marker2D")
+movement_target = NodePath("../Player")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(352, 104)
 
-[node name="BlockGroup" type="Node2D" parent="."]
-position = Vector2(42, 58)
+[node name="InverseBlocks" type="Node2D" parent="."]
+position = Vector2(152, 58)
 
-[node name="PushableBlockBody" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(0, 0)
+[node name="BlockColumnINVERSE" type="Node2D" parent="InverseBlocks"]
+position = Vector2(-62, 0)
 
-[node name="PushableBlockBody2" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(32, 0)
+[node name="PushableBlockBody" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, -2)
+milk_switched = true
 
-[node name="PushableBlockBody3" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(64, 0)
+[node name="PushableBlockBody2" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, -2)
+milk_switched = true
 
-[node name="PushableBlockBody4" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(96, 0)
+[node name="PushableBlockBody3" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 14)
+milk_switched = true
 
-[node name="PushableBlockBody5" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(128, 0)
+[node name="PushableBlockBody4" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 14)
+milk_switched = true
 
-[node name="PushableBlockBody6" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(160, 0)
+[node name="PushableBlockBody5" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 30)
+milk_switched = true
 
-[node name="PushableBlockBody7" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(192, 0)
+[node name="PushableBlockBody6" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 30)
+milk_switched = true
 
-[node name="PushableBlockBody8" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(224, 0)
+[node name="PushableBlockBody11" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 78)
+milk_switched = true
 
-[node name="PushableBlockBody9" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(256, 0)
+[node name="PushableBlockBody12" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 78)
+milk_switched = true
 
-[node name="PushableBlockBody10" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(288, 0)
+[node name="PushableBlockBody13" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 94)
+milk_switched = true
 
-[node name="PushableBlockBody11" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(320, 0)
+[node name="PushableBlockBody14" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 94)
+milk_switched = true
 
-[node name="PushableBlockBody23" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(0, 32)
+[node name="PushableBlockBody15" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 110)
+milk_switched = true
 
-[node name="PushableBlockBody24" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(32, 32)
+[node name="PushableBlockBody16" parent="InverseBlocks/BlockColumnINVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 110)
+milk_switched = true
 
-[node name="PushableBlockBody25" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(64, 32)
+[node name="BlockColumn2INVERSE" type="Node2D" parent="InverseBlocks"]
+position = Vector2(2, 0)
 
-[node name="PushableBlockBody26" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(96, 32)
+[node name="PushableBlockBody3" parent="InverseBlocks/BlockColumn2INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 30)
+milk_switched = true
 
-[node name="PushableBlockBody27" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(128, 32)
+[node name="PushableBlockBody4" parent="InverseBlocks/BlockColumn2INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 46)
+milk_switched = true
 
-[node name="PushableBlockBody28" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(160, 32)
+[node name="PushableBlockBody5" parent="InverseBlocks/BlockColumn2INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 62)
+milk_switched = true
 
-[node name="PushableBlockBody29" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(192, 32)
+[node name="PushableBlockBody6" parent="InverseBlocks/BlockColumn2INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 78)
+milk_switched = true
 
-[node name="PushableBlockBody30" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(224, 32)
+[node name="PushableBlockBody26" parent="InverseBlocks/BlockColumn2INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 46)
+milk_switched = true
 
-[node name="PushableBlockBody31" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(256, 32)
+[node name="PushableBlockBody27" parent="InverseBlocks/BlockColumn2INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 78)
+milk_switched = true
 
-[node name="PushableBlockBody32" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(288, 32)
+[node name="PushableBlockBody18" parent="InverseBlocks/BlockColumn2INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 30)
+milk_switched = true
 
-[node name="PushableBlockBody33" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(320, 32)
+[node name="PushableBlockBody19" parent="InverseBlocks/BlockColumn2INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 62)
+milk_switched = true
 
-[node name="PushableBlockBody45" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(0, 64)
+[node name="BlockColumn3INVERSE" type="Node2D" parent="InverseBlocks"]
+position = Vector2(58, 0)
 
-[node name="PushableBlockBody46" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(32, 64)
+[node name="PushableBlockBody" parent="InverseBlocks/BlockColumn3INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, -2)
+milk_switched = true
 
-[node name="PushableBlockBody47" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(64, 64)
+[node name="PushableBlockBody2" parent="InverseBlocks/BlockColumn3INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 14)
+milk_switched = true
 
-[node name="PushableBlockBody48" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(96, 64)
+[node name="PushableBlockBody3" parent="InverseBlocks/BlockColumn3INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 30)
+milk_switched = true
 
-[node name="PushableBlockBody49" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(128, 64)
+[node name="PushableBlockBody4" parent="InverseBlocks/BlockColumn3INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 46)
+milk_switched = true
 
-[node name="PushableBlockBody50" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(160, 64)
+[node name="PushableBlockBody5" parent="InverseBlocks/BlockColumn3INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 62)
+milk_switched = true
 
-[node name="PushableBlockBody51" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(192, 64)
+[node name="PushableBlockBody6" parent="InverseBlocks/BlockColumn3INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 78)
+milk_switched = true
 
-[node name="PushableBlockBody52" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(224, 64)
+[node name="PushableBlockBody7" parent="InverseBlocks/BlockColumn3INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 94)
+milk_switched = true
 
-[node name="PushableBlockBody53" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(256, 64)
-
-[node name="PushableBlockBody54" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(288, 64)
-
-[node name="PushableBlockBody55" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(320, 64)
-
-[node name="PushableBlockBody67" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(0, 96)
-
-[node name="PushableBlockBody68" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(32, 96)
-
-[node name="PushableBlockBody69" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(64, 96)
-
-[node name="PushableBlockBody70" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(96, 96)
-
-[node name="PushableBlockBody71" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(128, 96)
-
-[node name="PushableBlockBody72" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(160, 96)
-
-[node name="PushableBlockBody73" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(192, 96)
-
-[node name="PushableBlockBody74" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(224, 96)
-
-[node name="PushableBlockBody75" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(256, 96)
-
-[node name="PushableBlockBody76" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(288, 96)
-
-[node name="PushableBlockBody77" parent="BlockGroup" instance=ExtResource("3_f7bbr")]
-position = Vector2(320, 96)
+[node name="PushableBlockBody8" parent="InverseBlocks/BlockColumn3INVERSE" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 110)
+milk_switched = true
 
 [node name="Slime2" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("2_6163w")]
 position = Vector2(364, 195)
-movement_target = NodePath("../Marker2D")
+movement_target = NodePath("../Player")
+
+[node name="NormalBlocks" type="Node2D" parent="."]
+
+[node name="BlockColumn1" type="Node2D" parent="NormalBlocks"]
+position = Vector2(42, 58)
+
+[node name="PushableBlockBody" parent="NormalBlocks/BlockColumn1" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, -2)
+
+[node name="PushableBlockBody2" parent="NormalBlocks/BlockColumn1" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 14)
+
+[node name="PushableBlockBody3" parent="NormalBlocks/BlockColumn1" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 30)
+
+[node name="PushableBlockBody4" parent="NormalBlocks/BlockColumn1" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 46)
+
+[node name="PushableBlockBody5" parent="NormalBlocks/BlockColumn1" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 62)
+
+[node name="PushableBlockBody6" parent="NormalBlocks/BlockColumn1" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 78)
+
+[node name="PushableBlockBody7" parent="NormalBlocks/BlockColumn1" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 94)
+
+[node name="PushableBlockBody8" parent="NormalBlocks/BlockColumn1" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 110)
+
+[node name="BlockColumn2" type="Node2D" parent="NormalBlocks"]
+position = Vector2(90, 58)
+
+[node name="PushableBlockBody" parent="NormalBlocks/BlockColumn2" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, -2)
+
+[node name="PushableBlockBody2" parent="NormalBlocks/BlockColumn2" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 14)
+
+[node name="PushableBlockBody3" parent="NormalBlocks/BlockColumn2" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 30)
+
+[node name="PushableBlockBody4" parent="NormalBlocks/BlockColumn2" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 46)
+
+[node name="PushableBlockBody5" parent="NormalBlocks/BlockColumn2" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 62)
+
+[node name="PushableBlockBody6" parent="NormalBlocks/BlockColumn2" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 78)
+
+[node name="PushableBlockBody7" parent="NormalBlocks/BlockColumn2" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 94)
+
+[node name="PushableBlockBody8" parent="NormalBlocks/BlockColumn2" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 110)
+
+[node name="BlockColumn3" type="Node2D" parent="NormalBlocks"]
+position = Vector2(154, 58)
+
+[node name="PushableBlockBody" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, -2)
+
+[node name="PushableBlockBody2" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 14)
+
+[node name="PushableBlockBody3" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 30)
+
+[node name="PushableBlockBody4" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 46)
+
+[node name="PushableBlockBody5" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 62)
+
+[node name="PushableBlockBody6" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 78)
+
+[node name="PushableBlockBody7" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 94)
+
+[node name="PushableBlockBody8" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 110)
+
+[node name="PushableBlockBody9" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, -2)
+
+[node name="PushableBlockBody10" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 14)
+
+[node name="PushableBlockBody11" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 30)
+
+[node name="PushableBlockBody12" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 46)
+
+[node name="PushableBlockBody13" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 62)
+
+[node name="PushableBlockBody14" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 78)
+
+[node name="PushableBlockBody25" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 14)
+
+[node name="PushableBlockBody26" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 46)
+
+[node name="PushableBlockBody27" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 78)
+
+[node name="PushableBlockBody28" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 110)
+
+[node name="PushableBlockBody29" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 14)
+
+[node name="PushableBlockBody30" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 46)
+
+[node name="PushableBlockBody31" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 78)
+
+[node name="PushableBlockBody15" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(-2, 94)
+
+[node name="PushableBlockBody17" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, -2)
+
+[node name="PushableBlockBody18" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 30)
+
+[node name="PushableBlockBody19" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 62)
+
+[node name="PushableBlockBody20" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 94)
+
+[node name="PushableBlockBody21" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, -2)
+
+[node name="PushableBlockBody22" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 30)
+
+[node name="PushableBlockBody23" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 62)
+
+[node name="PushableBlockBody24" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 94)
+
+[node name="PushableBlockBody16" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
+position = Vector2(14, 110)
