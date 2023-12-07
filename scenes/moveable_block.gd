@@ -100,11 +100,13 @@ func _process(delta):
 		set_collision_layer_value(3,false)
 		set_collision_layer_value(32,true)
 		$NavObs2D.set_avoidance_layer_value(3,false)
+		$BlockInvisSprite.visible = true
 	else:
 		$BlockSprite.visible = true
 		set_collision_layer_value(32,false)
 		set_collision_layer_value(3,true)
 		$NavObs2D.set_avoidance_layer_value(3,true)
+		$BlockInvisSprite.visible = false
 	
 func _on_block_push_timer_timeout():
 	# Snapping this to the position it should be at (16 px from inital position) 

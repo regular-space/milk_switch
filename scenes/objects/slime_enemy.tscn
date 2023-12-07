@@ -26,7 +26,7 @@ avoidance_enabled = true
 radius = 8.0
 time_horizon_obstacles = 1.0
 max_speed = 50.0
-avoidance_mask = 7
+avoidance_mask = 6
 debug_enabled = true
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_velocity_computed"]

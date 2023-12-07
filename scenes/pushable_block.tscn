@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcvn5y2x4ee7t"]
+[gd_scene load_steps=5 format=3 uid="uid://bcvn5y2x4ee7t"]
 
 [ext_resource type="Script" path="res://scenes/moveable_block.gd" id="1_kqjbn"]
 [ext_resource type="Texture2D" uid="uid://2wt7dr5eyfao" path="res://textures/block_1.png" id="2_to5lw"]
+[ext_resource type="Texture2D" uid="uid://bfinwub2i3bjh" path="res://textures/block_invis.png" id="3_v672g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s8wj"]
 size = Vector2(16, 16)
@@ -21,6 +22,10 @@ one_way_collision_margin = 0.0
 
 [node name="BlockSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_to5lw")
+
+[node name="BlockInvisSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_v672g")
 
 [node name="PushTimer" type="Timer" parent="."]
 wait_time = 0.5
