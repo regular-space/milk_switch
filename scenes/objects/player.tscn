@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgycd23hcjdf8"]
+[gd_scene load_steps=10 format=3 uid="uid://dgycd23hcjdf8"]
 
 [ext_resource type="Script" path="res://scenes/objects/player.gd" id="1_v3p8v"]
 [ext_resource type="Texture2D" uid="uid://curvv6fsxjxoa" path="res://textures/player.png" id="2_ssd3o"]
@@ -58,6 +58,9 @@ animations = [{
 radius = 5.0
 height = 14.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c45a8"]
+size = Vector2(12, 16)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_v3p8v")
 
@@ -70,3 +73,14 @@ animation = &"down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_76jpu")
+
+[node name="InverseObjChecker" type="Area2D" parent="."]
+collision_layer = 2147483648
+collision_mask = 4026531840
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InverseObjChecker"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_c45a8")
+
+[connection signal="body_entered" from="InverseObjChecker" to="." method="_on_inverse_obj_checker_body_entered"]
+[connection signal="body_exited" from="InverseObjChecker" to="." method="_on_inverse_obj_checker_body_exited"]

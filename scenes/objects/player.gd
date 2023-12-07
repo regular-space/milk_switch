@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal switch_milk_pressed
 
+var allow_switch_milk := true
+
 @export var speed: int = 75
 @export var deceleration: int = 50
 var direction: Vector2
@@ -18,7 +20,7 @@ func _physics_process(delta):
 			switch_milk_pressed.emit()
 	
 	if not Global.player_dead:
-		if Input.is_action_just_pressed("switch_milk"):
+		if Input.is_action_just_pressed("switch_milk") and allow_switch_milk:
 			Audio.moo.play()
 			Global.shake_screen(1, 0.2)
 			switch_milk_pressed.emit()
@@ -51,3 +53,10 @@ func _physics_process(delta):
 
 func on_hit() -> void:
 	Global.player_dead = true
+
+func _on_inverse_obj_checker_body_entered(body):
+	allow_switch_milk = false
+
+
+func _on_inverse_obj_checker_body_exited(body):
+	allow_switch_milk = true
