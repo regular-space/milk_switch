@@ -9,7 +9,7 @@ var shake_screen_intensity: float
 
 var current_camera: Camera2D
 var current_room: Node2D
-var current_room_pack
+var current_room_pack: Resource
 
 var player_position: Vector2
 var disable_actor = false
@@ -37,6 +37,7 @@ func change_room(destination_room, fade_speed) -> void:
 func _on_ready_camera(camera) -> void:
 	current_camera = camera
 	
+# Remember to write ready.connect(Global._on_ready_room.bind(self)) in your level's _ready()
 func _on_ready_room(room) -> void:
 	current_room = room
 	match current_room.name:
