@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwv7786i1c4x2"]
+[gd_scene load_steps=8 format=3 uid="uid://bwv7786i1c4x2"]
 
 [ext_resource type="TileSet" uid="uid://c0n4ksjkjiqr5" path="res://tilesets/wall_tileset.tres" id="1_xm36f"]
 [ext_resource type="PackedScene" uid="uid://c8a23khvs7hil" path="res://scenes/objects/slime_enemy.tscn" id="2_6163w"]
 [ext_resource type="PackedScene" uid="uid://bcvn5y2x4ee7t" path="res://scenes/pushable_block.tscn" id="3_f7bbr"]
 [ext_resource type="PackedScene" uid="uid://dgycd23hcjdf8" path="res://scenes/objects/player.tscn" id="4_m76it"]
 [ext_resource type="PackedScene" uid="uid://wwfwtdm57pv6" path="res://scenes/objects/room_camera.tscn" id="5_2oaoe"]
+[ext_resource type="PackedScene" uid="uid://w0s8xrvwdwm4" path="res://scenes/button_1.tscn" id="5_u2k32"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rhjrw"]
 vertices = PackedVector2Array(366, 18, 366, 30, 22, 30, 18, 18, 18, 198, 22, 58, 366, 58, 366, 166, 22, 166, 22, 194, 366, 198, 366, 194)
@@ -17,6 +18,9 @@ agent_radius = 8.0
 
 [node name="RoomCamera" parent="." instance=ExtResource("5_2oaoe")]
 position = Vector2(193, 103)
+
+[node name="Button" parent="." instance=ExtResource("5_u2k32")]
+position = Vector2(368, 111)
 
 [node name="Player" parent="." instance=ExtResource("4_m76it")]
 position = Vector2(17, 109)
@@ -34,9 +38,6 @@ navigation_layers = 15
 [node name="Slime" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("2_6163w")]
 position = Vector2(361, 24)
 movement_target = NodePath("../Player")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(352, 104)
 
 [node name="InverseBlocks" type="Node2D" parent="."]
 position = Vector2(152, 58)
@@ -317,3 +318,6 @@ position = Vector2(14, 94)
 
 [node name="PushableBlockBody16" parent="NormalBlocks/BlockColumn3" instance=ExtResource("3_f7bbr")]
 position = Vector2(14, 110)
+
+[connection signal="button_pressed" from="Button" to="Slime" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Button" to="Slime2" method="_on_button_pressed"]

@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var movement_target: Node2D
 @export var nav_agent: NavigationAgent2D
 
+var have_we_collided := false
+var current_agent_pos: Vector2
+var direction: Vector2
+
 func _ready():
 	nav_agent.path_desired_distance = 4.0
 	nav_agent.target_desired_distance = 4.0
@@ -22,18 +26,31 @@ func _physics_process(delta):
 	# doing anything in the phys_process func
 	if nav_agent.is_navigation_finished():
 		return
+	# Extra help for resolving enemies being stuck in blocks
+	if have_we_collided and current_agent_pos == global_position:
+		# Based on which direction the enemies are roughly going
+		if direction.x > 0:
+			global_position -= Vector2(16,0)
+		else:
+			global_position += Vector2(16,0)
 	
-	var current_agent_pos: Vector2 = global_position
+	current_agent_pos = global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	set_move_target(movement_target.position)
 	# Using vector to math here to get a vector pointing towards the next
 	# position provided by the navigation system
-	var direction := (next_path_position - current_agent_pos)
+	direction = (next_path_position - current_agent_pos)
 	velocity += direction
-	
 	nav_agent.set_velocity(velocity)
 
 
 func _on_velocity_computed(safe_velocity):
 	velocity = safe_velocity
-	move_and_slide()
+	have_we_collided = move_and_slide()
+
+func die():
+	queue_free()
+
+func _on_button_pressed(id):
+	if id == 1:
+		die()
