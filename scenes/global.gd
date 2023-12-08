@@ -39,8 +39,16 @@ func _on_ready_camera(camera) -> void:
 	
 func _on_ready_room(room) -> void:
 	current_room = room
-	if current_room.name == "KevLevelA":
-		current_room_pack = preload("res://scenes/rooms/kev_level_a.tscn")
+	match current_room.name:
+		"KevLevelA":
+			current_room_pack = preload("res://scenes/rooms/kev_level_a.tscn")
+		"KevLevelB":
+			current_room_pack = preload("res://scenes/rooms/kev_level_b.tscn")
+		"KevLevelC":
+			current_room_pack = preload("res://scenes/rooms/kev_level_c.tscn")
+		"KevLevelD":
+			current_room_pack = preload("res://scenes/rooms/kev_level_d.tscn")
+	
 
 func shake_screen(intensity: float, length: float) -> void:
 	shake_screen_intensity = intensity

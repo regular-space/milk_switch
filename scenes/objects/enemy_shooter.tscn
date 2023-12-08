@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://vr8pfvd6ha6c"]
+[gd_scene load_steps=9 format=3 uid="uid://vr8pfvd6ha6c"]
 
 [ext_resource type="Texture2D" uid="uid://cbdfv1dqmv11v" path="res://textures/enemy_shooter.png" id="1_33yhg"]
 [ext_resource type="Script" path="res://scenes/objects/enemy_shooter.gd" id="1_45v5n"]
-[ext_resource type="PackedScene" uid="uid://buiv4pgdb5n2r" path="res://scenes/sound_nodes/gunshot.tscn" id="3_mpm45"]
 [ext_resource type="PackedScene" uid="uid://csopnnf6fjlr4" path="res://scenes/sound_nodes/footsteps.tscn" id="4_l2hfj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32kn6"]
@@ -73,8 +72,6 @@ default_color = Color(0.121569, 0.443137, 0.792157, 1)
 
 [node name="Muzzle" type="Marker2D" parent="Aim"]
 position = Vector2(10, 0)
-
-[node name="Gunshot" parent="." instance=ExtResource("3_mpm45")]
 
 [node name="Footsteps" parent="." instance=ExtResource("4_l2hfj")]
 

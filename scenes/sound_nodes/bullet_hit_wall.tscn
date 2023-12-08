@@ -6,5 +6,8 @@
 [node name="BulletHitWall" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_hj6ob")
 volume_db = -10.0
+autoplay = true
 bus = &"Sounds"
 script = ExtResource("2_4pf7m")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

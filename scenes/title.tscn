@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b75hsc4e0nprp"]
+[gd_scene load_steps=4 format=3 uid="uid://b75hsc4e0nprp"]
 
 [ext_resource type="Script" path="res://scenes/title.gd" id="1_56maj"]
 [ext_resource type="Texture2D" uid="uid://w1lsc23vi5fy" path="res://textures/title.png" id="2_uw061"]
+[ext_resource type="PackedScene" uid="uid://wwfwtdm57pv6" path="res://scenes/objects/room_camera.tscn" id="3_sg1q4"]
 
 [node name="Title" type="Node2D"]
 script = ExtResource("1_56maj")
@@ -9,3 +10,6 @@ script = ExtResource("1_56maj")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(192, 108)
 texture = ExtResource("2_uw061")
+
+[node name="RoomCamera" parent="." instance=ExtResource("3_sg1q4")]
+position = Vector2(192, 104)

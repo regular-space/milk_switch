@@ -2,7 +2,6 @@ extends CharacterBody2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var sprite_2d = $Sprite2D
 
-@onready var bullet_hit_wall = $BulletHitWall
 var speed := 150
 var direction = Vector2.ZERO
 var can_deploy = false
@@ -39,7 +38,7 @@ func on_hit() -> void:
 
 # Doesn't queue free immediately to make sure sound plays first, if a sound plays
 func disable_self() -> void:
-	bullet_hit_wall.play()
+	Audio.play_sound("bullet_hit_wall")
 	Global.shake_screen(1, 0.1)
 	collision_shape_2d.set_deferred("disabled", true)
 	sprite_2d.hide()

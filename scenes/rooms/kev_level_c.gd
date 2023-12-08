@@ -8,7 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("switch_milk"):
-		Global.shake_screen(1, 1)
-		#Global.change_room(test, 1)
-		pass
+	pass

@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@onready var gunshot = $Gunshot
 @onready var footsteps = $Footsteps
 @onready var cooldown = $Cooldown
 @onready var show_shoot_animation = $ShowShootAnimation
@@ -85,7 +84,7 @@ func _on_cooldown_timeout():
 
 func shoot_bullet() -> void:
 	texture.play("shoot")
-	gunshot.play()
+	Audio.play_sound("gunshot")
 	var new_bullet = Global.bullet.instantiate()
 	new_bullet.setup(aim, muzzle)
 	owner.add_child(new_bullet)
@@ -96,6 +95,3 @@ func _on_show_shoot_animation_timeout():
 	texture.play("idle")
 	cooldown.start()
 
-
-func _on_gunshot_finished():
-	gunshot.stop()

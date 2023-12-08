@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://buiv4pgdb5n2r"]
+[gd_scene load_steps=3 format=3 uid="uid://buiv4pgdb5n2r"]
 
 [ext_resource type="AudioStream" uid="uid://ba7mt1lhlx04a" path="res://sounds/682467__supersouper__m1-garand-shot_edit.wav" id="1_858fa"]
+[ext_resource type="Script" path="res://scenes/sound_nodes/gunshot.gd" id="2_62kqk"]
 
 [node name="Gunshot" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_858fa")
 volume_db = -15.0
+autoplay = true
+script = ExtResource("2_62kqk")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
