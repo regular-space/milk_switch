@@ -1,0 +1,332 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdj8wx31qffb"]
+
+[ext_resource type="PackedScene" uid="uid://bcvn5y2x4ee7t" path="res://scenes/pushable_block.tscn" id="1_bq4uo"]
+[ext_resource type="TileSet" uid="uid://c0n4ksjkjiqr5" path="res://tilesets/wall_tileset.tres" id="2_6y3sa"]
+[ext_resource type="PackedScene" uid="uid://dgycd23hcjdf8" path="res://scenes/objects/player.tscn" id="3_qwqfj"]
+[ext_resource type="PackedScene" uid="uid://wwfwtdm57pv6" path="res://scenes/objects/room_camera.tscn" id="4_3lhel"]
+[ext_resource type="PackedScene" uid="uid://w0s8xrvwdwm4" path="res://scenes/button_1.tscn" id="5_yvolo"]
+[ext_resource type="Script" path="res://scenes/rooms/enemy_spawner.gd" id="6_fl7un"]
+[ext_resource type="PackedScene" uid="uid://vr8pfvd6ha6c" path="res://scenes/objects/enemy_shooter.tscn" id="7_ct2wn"]
+[ext_resource type="PackedScene" uid="uid://c8a23khvs7hil" path="res://scenes/objects/slime_enemy.tscn" id="8_lg1yn"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rpawy"]
+vertices = PackedVector2Array(366, 198, 18, 198, 18, 170, 346, 170, 366, 130, 346, 142, 18, 130, 18, 142)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(8, 120, 376, 120, 376, 208, 8, 208, 8, 160, 336, 160, 336, 152, 8, 152)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Level Root" type="Node2D"]
+
+[node name="Top Buttons" type="Node2D" parent="."]
+
+[node name="ButtonSprite" parent="Top Buttons" instance=ExtResource("5_yvolo")]
+position = Vector2(279, 72)
+unique_id = 1
+
+[node name="ButtonSprite2" parent="Top Buttons" instance=ExtResource("5_yvolo")]
+position = Vector2(279, 88)
+unique_id = 2
+
+[node name="ButtonSprite3" parent="Top Buttons" instance=ExtResource("5_yvolo")]
+position = Vector2(279, 104)
+unique_id = 3
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_6y3sa")
+format = 2
+layer_0/tile_data = PackedInt32Array(1703936, 262144, 3, 1638400, 196608, 1, 1572864, 196608, 1, 1507328, 196608, 1, 1441792, 196608, 1, 1376256, 196608, 1, 1310720, 196608, 1, 1245184, 262144, 4, 1179648, 196608, 1, 1114112, 196608, 1, 1048576, 196608, 1, 983040, 196608, 1, 917504, 196608, 1, 851968, 196608, 1, 786432, 196608, 1, 720896, 196608, 1, 655360, 196608, 1, 589824, 196608, 1, 524288, 196608, 1, 458752, 262144, 4, 393216, 196608, 1, 327680, 196608, 1, 262144, 196608, 1, 196608, 196608, 1, 131072, 196608, 1, 65536, 196608, 1, 0, 262144, 0, 1703983, 458752, 3, 1703982, 65536, 3, 1703981, 65536, 3, 1703980, 65536, 3, 1703979, 65536, 3, 1703978, 65536, 3, 1703977, 65536, 3, 1703976, 65536, 3, 1703975, 65536, 3, 1703974, 65536, 3, 1703973, 65536, 3, 1703972, 65536, 3, 1703971, 65536, 3, 1703970, 65536, 3, 1703969, 65536, 3, 1703968, 65536, 3, 1703967, 65536, 3, 1703966, 65536, 3, 1703965, 65536, 3, 1703964, 65536, 3, 1703963, 65536, 3, 1703962, 65536, 3, 1703961, 65536, 3, 1703960, 65536, 3, 1703959, 65536, 3, 1703958, 65536, 3, 1703957, 65536, 3, 1703956, 65536, 3, 1703955, 65536, 3, 1703954, 65536, 3, 1703953, 65536, 3, 1703952, 65536, 3, 1703951, 65536, 3, 1703950, 65536, 3, 1703949, 65536, 3, 1703948, 65536, 3, 1703947, 65536, 3, 1703946, 65536, 3, 1703945, 65536, 3, 1703944, 65536, 3, 1703943, 65536, 3, 1703942, 65536, 3, 1703941, 65536, 3, 1703940, 65536, 3, 1703939, 65536, 3, 1703938, 65536, 3, 1703937, 65536, 3, 47, 458752, 0, 65583, 196608, 1, 131119, 196608, 1, 196655, 196608, 1, 262191, 196608, 1, 327727, 196608, 1, 393263, 196608, 1, 458799, 196608, 1, 524335, 196608, 1, 589871, 196608, 1, 655407, 196608, 1, 720943, 196608, 1, 786479, 196608, 1, 852015, 196608, 1, 917551, 458752, 4, 983087, 196608, 1, 1048623, 196608, 1, 1114159, 196608, 1, 1179695, 196608, 1, 1245231, 196608, 1, 1310767, 196608, 1, 1376303, 196608, 1, 1441839, 196608, 1, 1507375, 196608, 1, 1572911, 196608, 1, 1638447, 196608, 1, 1, 65536, 3, 2, 65536, 3, 3, 65536, 3, 4, 65536, 3, 5, 65536, 3, 6, 65536, 3, 7, 65536, 3, 8, 65536, 3, 9, 65536, 3, 10, 65536, 3, 11, 65536, 3, 12, 65536, 3, 13, 65536, 3, 14, 65536, 3, 15, 65536, 3, 16, 65536, 3, 17, 65536, 3, 18, 65536, 3, 19, 65536, 3, 20, 65536, 3, 21, 65536, 3, 22, 65536, 3, 23, 65536, 3, 24, 65536, 3, 25, 65536, 3, 26, 65536, 3, 27, 65536, 3, 28, 65536, 3, 29, 65536, 3, 30, 65536, 3, 31, 65536, 3, 32, 65536, 3, 33, 65536, 3, 34, 65536, 3, 35, 65536, 3, 36, 65536, 3, 37, 65536, 3, 38, 65536, 3, 39, 65536, 3, 40, 65536, 3, 41, 65536, 3, 42, 65536, 3, 43, 65536, 3, 44, 65536, 3, 45, 65536, 3, 46, 65536, 3, 458793, 131072, 3, 458792, 65536, 3, 458791, 65536, 3, 458790, 65536, 3, 458789, 65536, 3, 458788, 65536, 3, 458787, 65536, 3, 458786, 65536, 3, 458785, 65536, 3, 458784, 65536, 3, 458783, 65536, 3, 458782, 65536, 3, 458781, 65536, 3, 458780, 65536, 3, 458779, 65536, 3, 458778, 65536, 3, 458777, 65536, 3, 458776, 65536, 3, 458775, 65536, 3, 458774, 65536, 3, 458773, 65536, 3, 458772, 65536, 3, 458771, 65536, 3, 458770, 65536, 3, 458769, 65536, 3, 458768, 65536, 3, 458767, 65536, 3, 458766, 65536, 3, 458765, 65536, 3, 458764, 65536, 3, 458763, 65536, 3, 458762, 65536, 3, 458761, 65536, 3, 458760, 65536, 3, 458759, 65536, 3, 458758, 65536, 3, 458757, 65536, 3, 458756, 65536, 3, 458755, 65536, 3, 458754, 65536, 3, 458753, 65536, 3, 917512, 65536, 3, 917513, 65536, 3, 917514, 65536, 3, 917515, 65536, 3, 917516, 65536, 3, 917517, 65536, 3, 917518, 65536, 3, 917519, 65536, 3, 917520, 65536, 3, 917521, 65536, 3, 917522, 65536, 3, 917523, 65536, 3, 917524, 65536, 3, 917525, 65536, 3, 917526, 65536, 3, 917527, 65536, 3, 917528, 65536, 3, 917529, 65536, 3, 917530, 65536, 3, 917531, 65536, 3, 917532, 65536, 3, 917533, 65536, 3, 917534, 65536, 3, 917535, 65536, 3, 917536, 65536, 3, 917537, 65536, 3, 917538, 65536, 3, 917539, 65536, 3, 917540, 65536, 3, 917541, 65536, 3, 917542, 65536, 3, 917543, 65536, 3, 917544, 65536, 3, 917545, 65536, 3, 917546, 65536, 3, 917547, 65536, 3, 917548, 65536, 3, 917549, 65536, 3, 917550, 65536, 3, 917511, 0, 3, 1245221, 65536, 3, 1245220, 65536, 3, 1245219, 65536, 3, 1245218, 65536, 3, 1245217, 65536, 3, 1245216, 65536, 3, 1245215, 65536, 3, 1245214, 65536, 3, 1245213, 65536, 3, 1245212, 65536, 3, 1245211, 65536, 3, 1245210, 65536, 3, 1245209, 65536, 3, 1245208, 65536, 3, 1245207, 65536, 3, 1245206, 65536, 3, 1245205, 65536, 3, 1245204, 65536, 3, 1245203, 65536, 3, 1245202, 65536, 3, 1245201, 65536, 3, 1245200, 65536, 3, 1245199, 65536, 3, 1245198, 65536, 3, 1245197, 65536, 3, 1245196, 65536, 3, 1245195, 65536, 3, 1245194, 65536, 3, 1245193, 65536, 3, 1245192, 65536, 3, 1245191, 65536, 3, 1245190, 65536, 3, 1245189, 65536, 3, 1245188, 65536, 3, 1245187, 65536, 3, 1245186, 65536, 3, 1245185, 65536, 3, 1245225, 131072, 3, 1245224, 65536, 3, 1245223, 65536, 3, 1245222, 65536, 3)
+
+[node name="Player" parent="." instance=ExtResource("3_qwqfj")]
+position = Vector2(21, 32)
+collision_mask = 15
+
+[node name="RoomCamera" parent="." instance=ExtResource("4_3lhel")]
+position = Vector2(192, 104)
+
+[node name="Blocks" type="Node2D" parent="."]
+position = Vector2(89, 31)
+
+[node name="PushableBlockBody" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(-43, 17)
+
+[node name="PushableBlockBody2" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(-43, 1)
+
+[node name="PushableBlockBody3" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(-43, -15)
+
+[node name="PushableBlockBody4" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(-27, 17)
+
+[node name="PushableBlockBody5" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(-27, 1)
+
+[node name="PushableBlockBody6" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(-27, -15)
+
+[node name="PushableBlockBody" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(132, 88)
+
+[node name="PushableBlockBody2" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(132, 72)
+
+[node name="PushableBlockBody3" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(132, 56)
+
+[node name="PushableBlockBody4" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(148, 88)
+
+[node name="PushableBlockBody5" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(148, 72)
+
+[node name="PushableBlockBody6" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(148, 56)
+
+[node name="PushableBlockBody7" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(100, 88)
+
+[node name="PushableBlockBody8" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(100, 72)
+
+[node name="PushableBlockBody9" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(100, 56)
+
+[node name="PushableBlockBody10" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(116, 88)
+
+[node name="PushableBlockBody11" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(116, 72)
+
+[node name="PushableBlockBody12" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(116, 56)
+
+[node name="PushableBlockBody13" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(68, 88)
+
+[node name="PushableBlockBody14" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(68, 72)
+
+[node name="PushableBlockBody15" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(68, 56)
+
+[node name="PushableBlockBody16" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(84, 88)
+
+[node name="PushableBlockBody17" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(84, 72)
+
+[node name="PushableBlockBody18" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(84, 56)
+
+[node name="PushableBlockBody19" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(20, 88)
+milk_switched = true
+
+[node name="PushableBlockBody20" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(20, 72)
+milk_switched = true
+
+[node name="PushableBlockBody21" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(20, 56)
+milk_switched = true
+
+[node name="PushableBlockBody21" parent="Blocks/PushableBlockBody6/PushableBlockBody21" instance=ExtResource("1_bq4uo")]
+position = Vector2(46, 56)
+milk_switched = true
+
+[node name="PushableBlockBody22" parent="Blocks/PushableBlockBody6/PushableBlockBody21" instance=ExtResource("1_bq4uo")]
+position = Vector2(-16, 56)
+
+[node name="PushableBlockBody23" parent="Blocks/PushableBlockBody6/PushableBlockBody21" instance=ExtResource("1_bq4uo")]
+position = Vector2(-16, 72)
+
+[node name="PushableBlockBody25" parent="Blocks/PushableBlockBody6/PushableBlockBody21" instance=ExtResource("1_bq4uo")]
+position = Vector2(0, 56)
+
+[node name="PushableBlockBody26" parent="Blocks/PushableBlockBody6/PushableBlockBody21" instance=ExtResource("1_bq4uo")]
+position = Vector2(0, 72)
+
+[node name="PushableBlockBody24" parent="Blocks/PushableBlockBody6/PushableBlockBody21" instance=ExtResource("1_bq4uo")]
+position = Vector2(62, 56)
+milk_switched = true
+
+[node name="PushableBlockBody21" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(32, 16)
+milk_switched = true
+
+[node name="PushableBlockBody24" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(48, 16)
+milk_switched = true
+
+[node name="PushableBlockBody23" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(128, 16)
+milk_switched = true
+
+[node name="PushableBlockBody26" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(144, 16)
+milk_switched = true
+
+[node name="PushableBlockBody22" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(80, 0)
+milk_switched = true
+
+[node name="PushableBlockBody25" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(96, 0)
+milk_switched = true
+
+[node name="PushableBlockBody27" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(176, 0)
+milk_switched = true
+
+[node name="PushableBlockBody28" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(192, 0)
+milk_switched = true
+
+[node name="PushableBlockBody29" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(208, 0)
+
+[node name="PushableBlockBody30" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(224, 0)
+
+[node name="PushableBlockBody31" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(208, 16)
+
+[node name="PushableBlockBody33" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(192, 16)
+
+[node name="PushableBlockBody32" parent="Blocks/PushableBlockBody6/PushableBlockBody21/PushableBlockBody24" instance=ExtResource("1_bq4uo")]
+position = Vector2(224, 16)
+
+[node name="PushableBlockBody22" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(36, 88)
+milk_switched = true
+
+[node name="PushableBlockBody23" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(36, 72)
+milk_switched = true
+
+[node name="PushableBlockBody24" parent="Blocks/PushableBlockBody6" instance=ExtResource("1_bq4uo")]
+position = Vector2(36, 56)
+milk_switched = true
+
+[node name="PushableBlockBody7" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(29, 17)
+milk_switched = true
+
+[node name="PushableBlockBody8" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(29, 1)
+milk_switched = true
+
+[node name="PushableBlockBody9" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(29, -15)
+milk_switched = true
+
+[node name="PushableBlockBody10" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(45, 17)
+milk_switched = true
+
+[node name="PushableBlockBody11" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(45, 1)
+milk_switched = true
+
+[node name="PushableBlockBody12" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(45, -15)
+milk_switched = true
+
+[node name="PushableBlockBody13" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(105, 17)
+
+[node name="PushableBlockBody14" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(105, 1)
+
+[node name="PushableBlockBody15" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(105, -15)
+
+[node name="PushableBlockBody16" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(121, 17)
+
+[node name="PushableBlockBody17" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(121, 1)
+
+[node name="PushableBlockBody18" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(121, -15)
+
+[node name="PushableBlockBody19" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(189, 17)
+milk_switched = true
+
+[node name="PushableBlockBody20" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(189, 1)
+milk_switched = true
+
+[node name="PushableBlockBody21" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(189, -15)
+milk_switched = true
+
+[node name="PushableBlockBody22" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(205, 17)
+milk_switched = true
+
+[node name="PushableBlockBody23" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(205, 1)
+milk_switched = true
+
+[node name="PushableBlockBody24" parent="Blocks" instance=ExtResource("1_bq4uo")]
+position = Vector2(205, -15)
+milk_switched = true
+
+[node name="Enemy Spawner" type="Node2D" parent="." node_paths=PackedStringArray("root_scene_node")]
+position = Vector2(310, 89)
+script = ExtResource("6_fl7un")
+root_scene_node = NodePath("..")
+enemy_scene_instance = ExtResource("7_ct2wn")
+
+[node name="Enemy Spawner2" type="Node2D" parent="." node_paths=PackedStringArray("root_scene_node")]
+position = Vector2(310, 71)
+script = ExtResource("6_fl7un")
+root_scene_node = NodePath("..")
+enemy_scene_instance = ExtResource("7_ct2wn")
+
+[node name="Enemy Spawner3" type="Node2D" parent="." node_paths=PackedStringArray("root_scene_node")]
+position = Vector2(310, 104)
+script = ExtResource("6_fl7un")
+root_scene_node = NodePath("..")
+enemy_scene_instance = ExtResource("7_ct2wn")
+
+[node name="Slime" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("8_lg1yn")]
+position = Vector2(23, 136)
+movement_target = NodePath("../Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_rpawy")
+navigation_layers = 15
+
+[node name="Enemy Spawner4" type="Node2D" parent="." node_paths=PackedStringArray("root_scene_node")]
+position = Vector2(97, 136)
+script = ExtResource("6_fl7un")
+root_scene_node = NodePath("..")
+enemy_scene_instance = ExtResource("8_lg1yn")
+
+[node name="Bot Buttons" type="Node2D" parent="."]
+
+[node name="ButtonSprite" parent="Bot Buttons" instance=ExtResource("5_yvolo")]
+visible = false
+position = Vector2(144, 144)
+unique_id = 4
+
+[node name="ButtonSprite2" parent="Bot Buttons" instance=ExtResource("5_yvolo")]
+visible = false
+position = Vector2(144, 128)
+unique_id = 5
+
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite" to="Enemy Spawner" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite" to="Enemy Spawner2" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite" to="Enemy Spawner3" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite2" to="Enemy Spawner" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite2" to="Enemy Spawner2" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite2" to="Enemy Spawner3" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite3" to="Enemy Spawner" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite3" to="Enemy Spawner2" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Top Buttons/ButtonSprite3" to="Enemy Spawner3" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Bot Buttons/ButtonSprite" to="Enemy Spawner4" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Bot Buttons/ButtonSprite2" to="Enemy Spawner4" method="_on_button_pressed"]
