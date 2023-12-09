@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk2klotv5qm16"]
+
+[ext_resource type="TileSet" uid="uid://c0n4ksjkjiqr5" path="res://tilesets/wall_tileset.tres" id="1_5c1g8"]
+[ext_resource type="PackedScene" uid="uid://wwfwtdm57pv6" path="res://scenes/objects/room_camera.tscn" id="2_2r2gx"]
+[ext_resource type="PackedScene" uid="uid://dgycd23hcjdf8" path="res://scenes/objects/player.tscn" id="3_weds2"]
+[ext_resource type="PackedScene" uid="uid://bcvn5y2x4ee7t" path="res://scenes/pushable_block.tscn" id="4_bitp1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_5c1g8")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 262144, 0, 1, 65536, 3, 2, 65536, 3, 3, 65536, 3, 4, 65536, 3, 5, 65536, 3, 6, 65536, 3, 7, 65536, 3, 8, 65536, 3, 9, 65536, 3, 10, 65536, 3, 11, 65536, 3, 12, 65536, 3, 13, 65536, 3, 14, 65536, 3, 15, 65536, 3, 16, 65536, 3, 17, 65536, 3, 18, 65536, 3, 19, 65536, 3, 20, 65536, 3, 21, 65536, 3, 22, 65536, 3, 23, 65536, 3, 24, 65536, 3, 25, 65536, 3, 26, 65536, 3, 27, 65536, 3, 28, 65536, 3, 29, 65536, 3, 30, 65536, 3, 31, 65536, 3, 32, 65536, 3, 33, 65536, 3, 34, 65536, 3, 35, 65536, 3, 36, 65536, 3, 37, 65536, 3, 38, 65536, 3, 39, 65536, 3, 40, 65536, 3, 41, 65536, 3, 42, 65536, 3, 43, 65536, 3, 44, 65536, 3, 45, 65536, 3, 46, 65536, 3, 47, 458752, 0, 1703983, 458752, 3, 1638447, 196608, 1, 1572911, 196608, 1, 1507375, 196608, 1, 1441839, 196608, 1, 1376303, 196608, 1, 1310767, 196608, 1, 1245231, 196608, 1, 1179695, 196608, 1, 1114159, 196608, 1, 1048623, 196608, 1, 983087, 196608, 1, 917551, 196608, 1, 852015, 196608, 1, 786479, 196608, 1, 720943, 196608, 1, 655407, 196608, 1, 589871, 196608, 1, 524335, 196608, 1, 458799, 196608, 1, 393263, 196608, 1, 327727, 196608, 1, 262191, 196608, 1, 196655, 196608, 1, 131119, 196608, 1, 65583, 196608, 1, 1703936, 262144, 3, 1703937, 65536, 3, 1703938, 65536, 3, 1703939, 65536, 3, 1703940, 65536, 3, 1703941, 65536, 3, 1703942, 65536, 3, 1703943, 65536, 3, 1703944, 65536, 3, 1703945, 65536, 3, 1703946, 65536, 3, 1703947, 65536, 3, 1703948, 65536, 3, 1703949, 65536, 3, 1703950, 65536, 3, 1703951, 65536, 3, 1703952, 65536, 3, 1703953, 65536, 3, 1703954, 65536, 3, 1703955, 65536, 3, 1703956, 65536, 3, 1703957, 65536, 3, 1703958, 65536, 3, 1703959, 65536, 3, 1703960, 65536, 3, 1703961, 65536, 3, 1703962, 65536, 3, 1703963, 65536, 3, 1703964, 65536, 3, 1703965, 65536, 3, 1703966, 65536, 3, 1703967, 65536, 3, 1703968, 65536, 3, 1703969, 65536, 3, 1703970, 65536, 3, 1703971, 65536, 3, 1703972, 65536, 3, 1703973, 65536, 3, 1703974, 65536, 3, 1703975, 65536, 3, 1703976, 65536, 3, 1703977, 65536, 3, 1703978, 65536, 3, 1703979, 65536, 3, 1703980, 65536, 3, 1703981, 65536, 3, 1703982, 65536, 3, 65536, 196608, 1, 131072, 196608, 1, 196608, 196608, 1, 262144, 196608, 1, 327680, 196608, 1, 393216, 196608, 1, 458752, 196608, 1, 524288, 196608, 1, 589824, 196608, 1, 655360, 196608, 1, 720896, 196608, 1, 786432, 196608, 1, 851968, 196608, 1, 917504, 196608, 1, 983040, 196608, 1, 1048576, 196608, 1, 1114112, 196608, 1, 1179648, 196608, 1, 1245184, 196608, 1, 1310720, 196608, 1, 1376256, 196608, 1, 1441792, 196608, 1, 1507328, 196608, 1, 1572864, 196608, 1, 1638400, 196608, 1)
+
+[node name="RoomCamera" parent="." instance=ExtResource("2_2r2gx")]
+position = Vector2(192, 104)
+
+[node name="Player" parent="." instance=ExtResource("3_weds2")]
+position = Vector2(64, 63)
+collision_mask = 15
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PushableBlockBody" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(64, 96)
+
+[node name="PushableBlockBody2" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(80, 64)
+
+[node name="PushableBlockBody3" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(48, 16)
+
+[node name="PushableBlockBody4" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(64, 32)
+
+[node name="PushableBlockBody5" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(48, 64)
+
+[node name="PushableBlockBody6" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(64, 48)
+
+[node name="PushableBlockBody9" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(64, 80)
+
+[node name="PushableBlockBody7" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(32, 64)
+
+[node name="PushableBlockBody8" parent="Node2D" instance=ExtResource("4_bitp1")]
+position = Vector2(96, 64)

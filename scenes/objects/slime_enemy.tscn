@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8a23khvs7hil"]
+
+[ext_resource type="Script" path="res://scenes/objects/slime_enemy.gd" id="1_7aa7v"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uw0rw"]
+width = 8
+height = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0bws"]
+size = Vector2(8, 8)
+
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+collision_mask = 15
+safe_margin = 0.01
+script = ExtResource("1_7aa7v")
+nav_agent = NodePath("NavigationAgent2D")
+
+[node name="Slime Sprite" type="Sprite2D" parent="."]
+texture = SubResource("NoiseTexture2D_uw0rw")
+
+[node name="Slime Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t0bws")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 8.0
+time_horizon_obstacles = 1.0
+max_speed = 50.0
+avoidance_mask = 6
+debug_enabled = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_velocity_computed"]
