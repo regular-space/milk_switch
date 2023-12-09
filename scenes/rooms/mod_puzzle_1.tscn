@@ -21,6 +21,7 @@ position = Vector2(193, 103)
 
 [node name="Button" parent="." instance=ExtResource("5_u2k32")]
 position = Vector2(368, 111)
+unique_id = 1
 
 [node name="Player" parent="." instance=ExtResource("4_m76it")]
 position = Vector2(17, 109)

@@ -1,14 +1,15 @@
 extends Sprite2D
 
-## MUST BE UNIQUE WITHIN A SCENE
-@export var unique_id: int =  1
+## MUST BE UNIQUE AND A NON-ZERO NUMBER WITHIN A SCENE
+@export var unique_id: int
 
 var is_pressed := false
 signal button_pressed(id:int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# 0 is considered invalid
+	assert(unique_id != 0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
