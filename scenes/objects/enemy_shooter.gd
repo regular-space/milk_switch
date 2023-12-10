@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var aim = $Aim
 @onready var muzzle = $Aim/Muzzle
 @onready var texture = $Texture
-@onready var breathing_room = $BreathingRoom
+@onready var breathing_room =   $BreathingRoom
 
 # Set initial state in Inspector
 @export_enum("Shooting", "Moving") var set_initial_state: int
