@@ -46,6 +46,7 @@ func _physics_process(delta):
 				else:
 					cooldown.start()
 					cooldown_timer_started = true
+					
 		
 		# Moving
 		elif current_state == 1:
@@ -98,3 +99,10 @@ func _on_show_shoot_animation_timeout():
 	texture.play("idle")
 	cooldown.start()
 
+
+
+func _on_stuck_detector_entered(body):
+	# Just doing this for now to check for blocks
+	print(body.get_class())
+	if body.get_class() == "AnimatableBody2D":
+		on_hit()

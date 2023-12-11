@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://vr8pfvd6ha6c"]
+[gd_scene load_steps=10 format=3 uid="uid://vr8pfvd6ha6c"]
 
 [ext_resource type="Texture2D" uid="uid://cbdfv1dqmv11v" path="res://textures/enemy_shooter.png" id="1_33yhg"]
 [ext_resource type="Script" path="res://scenes/objects/enemy_shooter.gd" id="1_45v5n"]
@@ -47,7 +47,11 @@ animations = [{
 radius = 5.0
 height = 10.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aegdx"]
+size = Vector2(6, 6)
+
 [node name="EnemyShooter" type="CharacterBody2D"]
+collision_mask = 15
 script = ExtResource("1_45v5n")
 
 [node name="Texture" type="AnimatedSprite2D" parent="."]
@@ -57,6 +61,13 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_p24vg")
+
+[node name="StuckAreaDetector" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="StuckCollision" type="CollisionShape2D" parent="StuckAreaDetector"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_aegdx")
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
@@ -78,5 +89,6 @@ position = Vector2(10, 0)
 [node name="BreathingRoom" type="RayCast2D" parent="."]
 target_position = Vector2(20, 0)
 
+[connection signal="body_entered" from="StuckAreaDetector" to="." method="_on_stuck_detector_entered"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="ShowShootAnimation" to="." method="_on_show_shoot_animation_timeout"]
