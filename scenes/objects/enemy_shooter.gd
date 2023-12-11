@@ -10,11 +10,12 @@ extends CharacterBody2D
 
 # Set initial state in Inspector
 @export_enum("Shooting", "Moving") var set_initial_state: int
+@export var speed = 50
 var initial_hud_state: bool
 var current_state
 var cooldown_timer_started = false
 var direction
-@export var speed = 50
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,6 +51,8 @@ func _physics_process(delta):
 		elif current_state == 1:
 			direction = Vector2.RIGHT.rotated(aim.rotation)
 			velocity = direction * speed
+			footsteps.play()
+			texture.play("move")
 			
 		var collision = move_and_collide(velocity * delta)
 		if collision:
