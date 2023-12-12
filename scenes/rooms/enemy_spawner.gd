@@ -20,7 +20,6 @@ func _process(delta):
 
 func _on_button_pressed(id: int):
 	if enemys_spawned != enemy_spawn_limit:
-		
 		if (id == 1 or id == 2 or id == 3):
 			#PackedScene here needs to be initialized to become a node
 			enemy_node = enemy_scene_instance.instantiate()
