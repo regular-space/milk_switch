@@ -9,25 +9,29 @@ extends CharacterBody2D
 @onready var breathing_room = $BreathingRoom
 
 # Set initial state in Inspector
-@export_enum("Shooting", "Moving") var set_initial_state: int
-var initial_hud_state: bool
+@export_enum("Shooting", "Idle") var set_initial_state: int
+#var initial_hud_state: bool
 var current_state
 var cooldown_timer_started = false
-var direction
-@export var speed = 50
+var direction = Vector2.ZERO
+#@export var speed = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Hud.palette_switched.connect(self._on_palette_switched)
-	
-	## Black
-	#if Hud.palette_switch:
-		#initial_hud_state = true
-	## White
-	#else:
-		#initial_hud_state = false
+		
+	# Assume white is the initial HUD state
 	current_state = set_initial_state
-	
+	match current_state:
+		0:
+			initialize_shooting()
+		1:
+			initialize_idle()
+			
+	## Ran into bug where shooters wouldn't reset properly when
+	## player resets the scene. This seems to fix it.
+	if Hud.is_black:
+		current_state = flip_state(current_state)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -35,21 +39,30 @@ func _physics_process(delta):
 		aim.look_at(Global.player_position)
 		breathing_room.look_at(Global.player_position)
 		
-		# Shooting
-		if current_state == 0:
-			velocity = Vector2.ZERO
-			if not cooldown_timer_started:
-				if breathing_room.is_colliding():
-					if not breathing_room.get_collider().get_class() == "TileMap":
-						pass
-				else:
+		match current_state:
+			# Shooting
+			0:
+				velocity = Vector2.ZERO
+				if not cooldown_timer_started:
+					#if breathing_room.is_colliding():
+						#if not breathing_room.get_collider().get_class() == "TileMap":
+							#pass
+					#else:
+						#cooldown.start()
+						#cooldown_timer_started = true
 					cooldown.start()
 					cooldown_timer_started = true
+			# Idle
+			1:
+				pass
+			
+			_:
+				print(self.name + ": Error! current_state out of bounds!")
 		
-		# Moving
-		elif current_state == 1:
-			direction = Vector2.RIGHT.rotated(aim.rotation)
-			velocity = direction * speed
+		## Moving
+		#elif current_state == 1:
+			#direction = Vector2.RIGHT.rotated(aim.rotation)
+			#velocity = direction * speed
 			
 		var collision = move_and_collide(velocity * delta)
 		if collision:
@@ -61,23 +74,33 @@ func _physics_process(delta):
 		cooldown.stop()
 
 func on_hit() -> void:
-	self.queue_free()
+	#self.queue_free()
+	pass
 
 func _on_palette_switched() -> void:
-	# By default:
-	# When light mode, this guy should be shooting
-	# When dark, this guy should be smoovin'
-	if Hud.is_black:
-		current_state = 1
-		cooldown.stop()
-		show_shoot_animation.stop()
-		cooldown_timer_started = false
-		footsteps.play()
-		texture.play("move")
-	else:
-		current_state = 0
-		footsteps.stop()
-		texture.play("idle")
+	current_state = flip_state(current_state)
+		
+func flip_state(state):
+	var new_state: int
+	match state:
+		0:
+			new_state = 1
+			initialize_shooting()
+		1:
+			new_state = 0
+			initialize_idle()
+		_:
+			print(self.name + ": In flip_current_state(), state is out of bounds!")
+	return new_state
+
+func initialize_shooting() -> void:
+	cooldown.stop()
+	show_shoot_animation.stop()
+	cooldown_timer_started = false
+	texture.play("move")
+
+func initialize_idle() -> void:
+	texture.play("idle")
 		
 func _on_cooldown_timeout():
 	shoot_bullet()

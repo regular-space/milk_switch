@@ -25,10 +25,9 @@ Hud="*res://scenes/hud.tscn"
 
 window/size/viewport_width=384
 window/size/viewport_height=216
-window/size/initial_position_type=2
 window/size/initial_screen=1
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=768
+window/size/window_height_override=432
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
