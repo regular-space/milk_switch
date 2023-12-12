@@ -13,7 +13,7 @@ func _ready():
 	switch_milk_pressed.connect(Hud._on_switch_milk_pressed)
 
 func _physics_process(delta):
-	Global.player_position = self.position
+	Global.player_position = self.global_position
 	if Input.is_action_just_pressed("restart"):
 		Global.change_room(Global.current_room_pack, 3)
 		if Hud.is_black:
