@@ -52,3 +52,7 @@ position = Vector2(-169, -50)
 
 [node name="SolidBlock" parent="Blocks2" instance=ExtResource("6_d25rw")]
 position = Vector2(-139, -32)
+is_solid = true
+
+[node name="SolidBlock" parent="Blocks2/SolidBlock" instance=ExtResource("6_d25rw")]
+position = Vector2(0.607559, 19.7999)
