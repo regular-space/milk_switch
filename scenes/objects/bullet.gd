@@ -12,7 +12,7 @@ func _ready():
 
 func setup(aim, muzzle) -> void:
 	direction = Vector2.RIGHT.rotated(aim.rotation)
-	position = muzzle.global_position
+	global_position = muzzle.global_position
 	can_deploy = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -90,9 +90,8 @@ func shoot_bullet() -> void:
 	texture.play("shoot")
 	Audio.play_sound("gunshot")
 	var new_bullet = Global.bullet.instantiate()
-	new_bullet.setup(aim, muzzle)
 	owner.add_child(new_bullet)
-	
+	new_bullet.setup(aim, muzzle)
 	show_shoot_animation.start()
 
 func _on_show_shoot_animation_timeout():
