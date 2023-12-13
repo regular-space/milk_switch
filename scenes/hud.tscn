@@ -89,6 +89,7 @@ libraries = {
 }
 
 [node name="DeathText" type="Label" parent="."]
+visible = false
 z_index = -1
 offset_left = 2.0
 offset_top = 12.0

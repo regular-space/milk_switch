@@ -9,12 +9,12 @@ extends CharacterBody2D
 @onready var breathing_room = $BreathingRoom
 
 # Set initial state in Inspector
-@export_enum("Shooting", "Idle") var set_initial_state: int
+@export_enum("Shooting", "Moving") var set_initial_state: int
 #var initial_hud_state: bool
 var current_state
 var cooldown_timer_started = false
 var direction = Vector2.ZERO
-#@export var speed = 50
+@export var speed = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,8 +30,8 @@ func _ready():
 			
 	## Ran into bug where shooters wouldn't reset properly when
 	## player resets the scene. This seems to fix it.
-	#if Hud.is_black:
-		#current_state = flip_state(current_state)
+	if Hud.is_black:
+		current_state = flip_state(current_state)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -54,15 +54,11 @@ func _physics_process(delta):
 					cooldown_timer_started = true
 			# Idle
 			1:
-				pass
+				direction = Vector2.RIGHT.rotated(aim.rotation)
+				velocity = direction * speed
 			
 			_:
 				print(self.name + ": Error! current_state out of bounds!")
-		
-		## Moving
-		#elif current_state == 1:
-			#direction = Vector2.RIGHT.rotated(aim.rotation)
-			#velocity = direction * speed
 			
 		var collision = move_and_collide(velocity * delta)
 		if collision:
