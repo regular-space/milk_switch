@@ -68,6 +68,12 @@ func _physics_process(delta):
 	else:
 		footsteps.stop()
 		cooldown.stop()
+		texture.stop()
+
+	if Global.player_position.x < self.global_position.x:
+		texture.flip_h = true
+	else:
+		texture.flip_h = false
 
 func on_hit() -> void:
 	self.queue_free()
