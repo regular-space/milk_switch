@@ -41,8 +41,12 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 			if not cooldown_timer_started:
 				if breathing_room.is_colliding():
-					if not breathing_room.get_collider().get_class() == "TileMap":
-						pass
+					# This extra check here is just incase the collider has been moved
+					# or changed by something that executes in process with no way
+					# to change where it executes from e.g (a signal)
+					if breathing_room.get_collider() != null:
+						if not breathing_room.get_collider().get_class() == "TileMap":
+							pass
 				else:
 					cooldown.start()
 					cooldown_timer_started = true
