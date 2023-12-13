@@ -72,6 +72,9 @@ func _physics_process(delta):
 func on_hit() -> void:
 	#self.queue_free()
 	pass
+	
+func _on_crushed() -> void:
+	self.queue_free()
 
 func _on_palette_switched() -> void:
 	current_state = flip_state(current_state)
@@ -119,4 +122,4 @@ func _on_stuck_detector_entered(body):
 	# Just doing this for now to check for blocks
 	print(body.get_class())
 	if body.get_class() == "AnimatableBody2D":
-		on_hit()
+		_on_crushed()

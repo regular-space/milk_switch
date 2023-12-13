@@ -23,10 +23,7 @@ func _on_button_pressed(id: int):
 		if (id == 1 or id == 2 or id == 3):
 			#PackedScene here needs to be initialized to become a node
 			enemy_node = enemy_scene_instance.instantiate()
-			if Hud.is_black:
-				enemy_node.set_initial_state = 1
-			else:
-				enemy_node.set_initial_state = 0
+
 			owner.add_child(enemy_node)
 			enemy_node.set_owner(owner)
 			
