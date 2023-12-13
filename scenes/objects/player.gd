@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal switch_milk_pressed
 
 var allow_switch_milk := true
+var inverse_collision_enter_count := 0
 
 @export var speed: int = 75
 @export var deceleration: int = 50
@@ -56,8 +57,12 @@ func on_hit() -> void:
 	Global.disable_actor = true
 
 func _on_inverse_obj_checker_body_entered(body):
-	allow_switch_milk = false
-
+	if inverse_collision_enter_count == 0:
+		allow_switch_milk = false
+	inverse_collision_enter_count += 1
+	
 
 func _on_inverse_obj_checker_body_exited(body):
-	allow_switch_milk = true
+	inverse_collision_enter_count -= 1
+	if inverse_collision_enter_count == 0:
+		allow_switch_milk = true

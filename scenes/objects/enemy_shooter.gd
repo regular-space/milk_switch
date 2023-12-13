@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var aim = $Aim
 @onready var muzzle = $Aim/Muzzle
 @onready var texture = $Texture
-@onready var breathing_room = $BreathingRoom
+@onready var breathing_room =   $BreathingRoom
 
 # Set initial state in Inspector
 @export_enum("Shooting", "Moving") var set_initial_state: int
@@ -105,12 +105,18 @@ func shoot_bullet() -> void:
 	texture.play("shoot")
 	Audio.play_sound("gunshot")
 	var new_bullet = Global.bullet.instantiate()
-	new_bullet.setup(aim, muzzle)
 	owner.add_child(new_bullet)
-	
+	new_bullet.setup(aim, muzzle)
 	show_shoot_animation.start()
 
 func _on_show_shoot_animation_timeout():
 	texture.play("idle")
 	cooldown.start()
 
+
+
+func _on_stuck_detector_entered(body):
+	# Just doing this for now to check for blocks
+	print(body.get_class())
+	if body.get_class() == "AnimatableBody2D":
+		on_hit()

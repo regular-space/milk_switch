@@ -23,7 +23,7 @@ func _process(delta):
 
 func change_room(destination_room, fade_speed) -> void:
 	disable_actor = true
-	current_room.set_process(false)
+	current_room.set_processd(false)
 	current_room.set_physics_process(false)
 	var new_scene = destination_room.instantiate()
 	Hud.fade_out(fade_speed)
