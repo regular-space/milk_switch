@@ -10,5 +10,5 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("switch_milk"):
 		Global.shake_screen(1, 1)
+		Audio.moo.play()
 		#Global.change_room(test, 1)
-		pass
