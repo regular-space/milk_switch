@@ -32,7 +32,10 @@ func _on_button_pressed(id: int):
 			
 			enemy_node.global_position = global_position
 			enemys_spawned += 1
-			enemy_node.speed = 85
+			if id == 2:
+				enemy_node.speed = 65
+			else:
+				enemy_node.speed = 80
 		elif id == 4 or id == 5:
 			enemy_node = enemy_scene_instance.instantiate()
 			enemy_node.global_position = global_position

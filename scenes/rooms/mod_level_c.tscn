@@ -143,8 +143,15 @@ script = ExtResource("7_koi55")
 enemy_scene_instance = ExtResource("8_xtukb")
 enemy_target = NodePath("../Player")
 
+[node name="Enemy Spawner2" type="Node2D" parent="." node_paths=PackedStringArray("enemy_target")]
+position = Vector2(-141, 73)
+script = ExtResource("7_koi55")
+enemy_scene_instance = ExtResource("8_xtukb")
+enemy_target = NodePath("../Player")
+
 [node name="Player" parent="." instance=ExtResource("3_8iy08")]
 position = Vector2(-176, -89)
 collision_mask = 15
 
 [connection signal="button_pressed" from="Buttons/ButtonSprite" to="Enemy Spawner" method="_on_button_pressed"]
+[connection signal="button_pressed" from="Buttons/ButtonSprite2" to="Enemy Spawner2" method="_on_button_pressed"]
