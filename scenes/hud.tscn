@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://db22leq3g5838"]
+[gd_scene load_steps=9 format=3 uid="uid://db22leq3g5838"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_1ysl4"]
 [ext_resource type="Shader" path="res://shaders/flip_palette.gdshader" id="2_jklpr"]
 [ext_resource type="Script" path="res://scenes/PaletteSwitcher.gd" id="3_arp20"]
-[ext_resource type="FontFile" uid="uid://cr7tti5cr0sv3" path="res://fonts/Plato.ttf" id="4_lr5ka"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ahpws"]
 shader = ExtResource("2_jklpr")
@@ -96,6 +95,5 @@ offset_top = 12.0
 offset_right = 313.0
 offset_bottom = 49.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_lr5ka")
 theme_override_font_sizes/font_size = 16
 text = "Press R to restart!"

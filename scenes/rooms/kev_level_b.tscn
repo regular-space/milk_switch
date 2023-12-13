@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cihoudeob5rip"]
+[gd_scene load_steps=7 format=3 uid="uid://cihoudeob5rip"]
 
 [ext_resource type="Script" path="res://scenes/rooms/kev_level_b.gd" id="1_aseae"]
 [ext_resource type="TileSet" uid="uid://c0n4ksjkjiqr5" path="res://tilesets/wall_tileset.tres" id="2_2y8uk"]
 [ext_resource type="PackedScene" uid="uid://wwfwtdm57pv6" path="res://scenes/objects/room_camera.tscn" id="2_f2elj"]
 [ext_resource type="PackedScene" uid="uid://dgycd23hcjdf8" path="res://scenes/objects/player.tscn" id="4_athsw"]
+[ext_resource type="PackedScene" uid="uid://bcvs2j3asgp2y" path="res://scenes/objects/solid_block.tscn" id="6_d25rw"]
 [ext_resource type="PackedScene" uid="uid://vr8pfvd6ha6c" path="res://scenes/objects/enemy_shooter.tscn" id="6_gvyqc"]
 
 [node name="KevLevelB" type="Node2D"]
@@ -46,3 +47,8 @@ set_initial_state = 1
 
 [node name="Player" parent="." instance=ExtResource("4_athsw")]
 position = Vector2(-169, -50)
+
+[node name="Blocks2" type="Node" parent="."]
+
+[node name="SolidBlock" parent="Blocks2" instance=ExtResource("6_d25rw")]
+position = Vector2(-139, -32)

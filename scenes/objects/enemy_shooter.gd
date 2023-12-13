@@ -30,8 +30,8 @@ func _ready():
 			
 	## Ran into bug where shooters wouldn't reset properly when
 	## player resets the scene. This seems to fix it.
-	if Hud.is_black:
-		current_state = flip_state(current_state)
+	#if Hud.is_black:
+		#current_state = flip_state(current_state)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

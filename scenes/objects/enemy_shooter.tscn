@@ -66,6 +66,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Aim" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(10, 0, 0, 0)
 width = 1.0
 default_color = Color(0.121569, 0.443137, 0.792157, 1)
