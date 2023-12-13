@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://scenes/objects/slime_enemy.gd" id="1_7aa7v"]
 [ext_resource type="Texture2D" uid="uid://cqww8li8usu4c" path="res://textures/slime_1.png" id="2_ogl0x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0bws"]
-size = Vector2(8, 8)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_as4hn"]
+radius = 6.0
+height = 14.0
 
 [node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 collision_mask = 15
@@ -16,7 +17,8 @@ nav_agent = NodePath("NavigationAgent2D")
 texture = ExtResource("2_ogl0x")
 
 [node name="Slime Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_t0bws")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_as4hn")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true

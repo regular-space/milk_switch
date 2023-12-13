@@ -42,15 +42,20 @@ func _physics_process(delta):
 	direction = (next_path_position - current_agent_pos)
 	velocity += direction
 	nav_agent.set_velocity(velocity)
+	
 
 
 func _on_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 	have_we_collided = move_and_slide()
+	var collision = move_and_collide(velocity.normalized(),true)
+	if collision:
+		if collision.get_collider().has_method("on_hit"):
+			collision.get_collider().on_hit()
 
-func die():
+func on_hit() -> void:
 	queue_free()
 
 func _on_button_pressed(id):
 	if id == 1:
-		die()
+		on_hit()
