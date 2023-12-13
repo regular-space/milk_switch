@@ -22,6 +22,7 @@ func _process(delta):
 		randi_range(-shake_screen_intensity, shake_screen_intensity)) + current_camera.default_offset
 
 func change_room(destination_room, fade_speed) -> void:
+	is_changing_scene = true
 	disable_actor = true
 	#current_room.set_processs(false)
 	current_room.set_physics_process(false)
@@ -32,6 +33,7 @@ func change_room(destination_room, fade_speed) -> void:
 	current_room.queue_free()
 	disable_actor = false
 	get_tree().root.add_child(new_scene)
+	is_changing_scene = false
 	Hud.fade_in(fade_speed)
 
 func _on_ready_camera(camera) -> void:
@@ -53,7 +55,7 @@ func _on_ready_room(room) -> void:
 			current_room_pack = preload("res://scenes/rooms/mod_level_a.tscn")
 		"ModLevelB":
 			current_room_pack = preload("res://scenes/rooms/mod_level_b.tscn")
-		"ModLevelV":
+		"ModLevelC":
 			current_room_pack = preload("res://scenes/rooms/mod_level_c.tscn")
 		"EndScreen":
 			current_room_pack = preload("res://scenes/rooms/end_screen.tscn")

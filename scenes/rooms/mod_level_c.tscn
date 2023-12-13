@@ -31,6 +31,7 @@ offset_top = -111.0
 offset_right = 197.0
 offset_bottom = 119.0
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="RoomCamera" parent="." instance=ExtResource("1_djrkk")]
 
