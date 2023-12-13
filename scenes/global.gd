@@ -23,7 +23,7 @@ func _process(delta):
 
 func change_room(destination_room, fade_speed) -> void:
 	disable_actor = true
-	current_room.set_processd(false)
+	#current_room.set_processs(false)
 	current_room.set_physics_process(false)
 	var new_scene = destination_room.instantiate()
 	Hud.fade_out(fade_speed)
@@ -49,6 +49,14 @@ func _on_ready_room(room) -> void:
 			current_room_pack = preload("res://scenes/rooms/kev_level_c.tscn")
 		"KevLevelD":
 			current_room_pack = preload("res://scenes/rooms/kev_level_d.tscn")
+		"ModLevelA":
+			current_room_pack = preload("res://scenes/rooms/mod_level_a.tscn")
+		"ModLevelB":
+			current_room_pack = preload("res://scenes/rooms/mod_level_b.tscn")
+		"ModLevelV":
+			current_room_pack = preload("res://scenes/rooms/mod_level_c.tscn")
+		"EndScreen":
+			current_room_pack = preload("res://scenes/rooms/end_screen.tscn")
 	
 
 func shake_screen(intensity: float, length: float) -> void:

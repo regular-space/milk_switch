@@ -70,8 +70,7 @@ func _physics_process(delta):
 		cooldown.stop()
 
 func on_hit() -> void:
-	#self.queue_free()
-	pass
+	self.queue_free()
 	
 func _on_crushed() -> void:
 	self.queue_free()

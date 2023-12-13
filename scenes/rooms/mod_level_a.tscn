@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwv7786i1c4x2"]
+[gd_scene load_steps=10 format=3 uid="uid://bwv7786i1c4x2"]
 
 [ext_resource type="PackedScene" uid="uid://wwfwtdm57pv6" path="res://scenes/objects/room_camera.tscn" id="1_pfo5m"]
+[ext_resource type="Script" path="res://scenes/rooms/mod_level_a.gd" id="1_yrmkh"]
 [ext_resource type="PackedScene" uid="uid://w0s8xrvwdwm4" path="res://scenes/button_1.tscn" id="2_iswr0"]
 [ext_resource type="PackedScene" uid="uid://dgycd23hcjdf8" path="res://scenes/objects/player.tscn" id="3_45bcr"]
 [ext_resource type="TileSet" uid="uid://c0n4ksjkjiqr5" path="res://tilesets/wall_tileset.tres" id="4_x2wva"]
@@ -8,7 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bcvn5y2x4ee7t" path="res://scenes/pushable_block.tscn" id="6_6a6vc"]
 [ext_resource type="PackedScene" uid="uid://vr8pfvd6ha6c" path="res://scenes/objects/enemy_shooter.tscn" id="6_41re3"]
 
-[node name="ModPuzzle1" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_k831c"]
+radius = 7.0
+
+[node name="ModLevelA" type="Node2D"]
+script = ExtResource("1_yrmkh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -10.0
@@ -106,6 +111,14 @@ position = Vector2(328, 20)
 [node name="EnemyShooter6" parent="Enemies" instance=ExtResource("6_41re3")]
 position = Vector2(328, 192)
 
+[node name="Stairs" type="Area2D" parent="."]
+position = Vector2(344, 104)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs"]
+shape = SubResource("CircleShape2D_k831c")
+
 [connection signal="button_pressed" from="Buttons/ButtonSprite" to="WallToSwapTo" method="_on_button_pressed"]
 [connection signal="button_pressed" from="Buttons/ButtonSprite2" to="WallToSwapTo" method="_on_button_pressed"]
 [connection signal="button_pressed" from="Buttons/ButtonSprite3" to="WallToSwapTo" method="_on_button_pressed"]
+[connection signal="body_entered" from="Stairs" to="." method="_on_stairs_body_entered"]
