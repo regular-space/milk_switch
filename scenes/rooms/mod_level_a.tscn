@@ -47,7 +47,7 @@ script = ExtResource("5_25n5r")
 map_to_replace = NodePath("../OriginalWalls")
 
 [node name="Player" parent="." instance=ExtResource("3_45bcr")]
-position = Vector2(274, 107)
+position = Vector2(25, 107)
 collision_mask = 15
 
 [node name="Blocks" type="Node2D" parent="."]
