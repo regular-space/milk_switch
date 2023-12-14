@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d274wsbhb4660"
+path="res://.godot/imported/Screen Saver.mp3-60ce694d78a2f5ed6c20dca931c986de.mp3str"
+
+[deps]
+
+source_file="res://music/Screen Saver.mp3"
+dest_files=["res://.godot/imported/Screen Saver.mp3-60ce694d78a2f5ed6c20dca931c986de.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

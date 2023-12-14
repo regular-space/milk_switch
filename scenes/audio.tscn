@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2sxhee755f03"]
+[gd_scene load_steps=4 format=3 uid="uid://d2sxhee755f03"]
 
 [ext_resource type="Script" path="res://scenes/audio.gd" id="1_l5ew1"]
 [ext_resource type="AudioStream" uid="uid://c5x1w280b6mda" path="res://sounds/381798__haxxar__e3ko.wav" id="2_f5eem"]
+[ext_resource type="AudioStream" uid="uid://d274wsbhb4660" path="res://music/Screen Saver.mp3" id="3_02j46"]
 
 [node name="Audio" type="Node2D"]
 script = ExtResource("1_l5ew1")
@@ -10,4 +11,9 @@ script = ExtResource("1_l5ew1")
 stream = ExtResource("2_f5eem")
 bus = &"Sounds"
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_02j46")
+autoplay = true
+
 [connection signal="finished" from="Moo" to="." method="_on_moo_finished"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
