@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck6bx0x5fk6d2"]
+
+[ext_resource type="AudioStream" uid="uid://cf5xhwbvorjld" path="res://sounds/163727__felixblume__cow-mooing-in-south-of-france-limousin.wav" id="1_rc6gw"]
+[ext_resource type="Script" path="res://scenes/sound_nodes/player_death.gd" id="2_1a4sw"]
+
+[node name="PlayerDeath" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_rc6gw")
+script = ExtResource("2_1a4sw")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

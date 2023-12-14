@@ -13,6 +13,7 @@ bus = &"Sounds"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_02j46")
+volume_db = -15.928
 autoplay = true
 
 [connection signal="finished" from="Moo" to="." method="_on_moo_finished"]
