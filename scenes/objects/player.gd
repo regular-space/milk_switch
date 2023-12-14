@@ -65,7 +65,7 @@ func _physics_process(delta):
 
 func on_hit() -> void:
 	Global.disable_actor = true
-	#Audio.play_sound("player_death")
+	#Audio.play_sound("hello")
 
 func _on_inverse_obj_checker_body_entered(body):
 	if inverse_collision_enter_count == 0:
