@@ -4,6 +4,7 @@ var gunshot = preload("res://scenes/sound_nodes/gunshot.tscn")
 var bullet_hit_wall = preload("res://scenes/sound_nodes/bullet_hit_wall.tscn")
 
 @onready var moo = $Moo
+@onready var music = $Music
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,3 +30,7 @@ func play_sound(sound: String):
 func add_sound(sound):
 	var new_sound = sound.instantiate()
 	add_child(new_sound)
+
+
+func _on_music_finished():
+	music.play()
