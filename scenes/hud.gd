@@ -2,10 +2,16 @@ extends CanvasLayer
 
 @onready var animate_black_screen = $AnimateBlackScreen
 @onready var black_screen = $BlackScreen
+@onready var restart_txt = $RestartText
+
+var restart_txt_rotation_limit := deg_to_rad(10.0)
+# False is left and true is right
+var restart_txt_dir := false
 
 # False = white, True = black
 var is_black = false
 signal palette_switched
+
 @export var palette: Array[Vector3] = [Vector3.ZERO, Vector3.ZERO,Vector3.ZERO];
 
 # Called when the node enters the scene tree for the first time.
@@ -16,10 +22,26 @@ func _ready():
 	
 	#black_screen.color = Color(0, 0, 0, 0)
 	black_screen.hide()
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Global.disable_actor and not Global.is_changing_scene:
+		restart_txt.visible = true
+		var tween = create_tween()
+		tween.set_speed_scale(1)
+		if restart_txt.rotation > 0.16:
+			restart_txt_dir = false
+		elif restart_txt.rotation < -0.16:
+			restart_txt_dir = true
+		if restart_txt_dir:
+			tween.tween_property(restart_txt,"rotation",restart_txt_rotation_limit,0.055).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE  )
+		else:
+			tween.tween_property(restart_txt,"rotation",-restart_txt_rotation_limit,0.055).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE  )
+
+	else:
+		restart_txt.visible = false
 
 func _on_switch_milk_pressed() -> void:
 	$PaletteSwitcher.material.set_shader_parameter("on", is_black)
