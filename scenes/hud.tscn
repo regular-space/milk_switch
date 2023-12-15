@@ -66,6 +66,7 @@ _data = {
 }
 
 [node name="HUD" type="CanvasLayer"]
+layer = 6
 script = ExtResource("1_1ysl4")
 palette = Array[Vector3]([Vector3(56, 23, 36), Vector3(129, 64, 45), Vector3(158, 82, 61)])
 
