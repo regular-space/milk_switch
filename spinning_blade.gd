@@ -28,6 +28,8 @@ func _process(delta):
 		set_collision_mask_value(32,false)
 
 func _physics_process(delta):
+	if Global.all_actors_disabled:
+		return
 	var collision = move_and_collide(velocity)
 	if collision:
 		velocity *= -1

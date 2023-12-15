@@ -25,6 +25,9 @@ func set_move_target(target: Vector2):
 	nav_agent.target_position = target
 	
 func _physics_process(delta):
+	
+	if Global.all_actors_disabled:
+		return
 	# When the navigation has no more positions to give us we just stop
 	# doing anything in the phys_process func
 	if nav_agent.is_navigation_finished():
@@ -53,6 +56,8 @@ func _physics_process(delta):
 		texture.flip_h = false
 
 func _on_velocity_computed(safe_velocity):
+	if Global.all_actors_disabled:
+		return
 	velocity = safe_velocity
 	have_we_collided = move_and_slide()
 	var collision = move_and_collide(velocity.normalized(),true)
