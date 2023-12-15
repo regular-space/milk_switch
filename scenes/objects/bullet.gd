@@ -27,6 +27,7 @@ func _physics_process(delta):
 			
 			# Assuming bullet hits a wall
 			else:
+				Vfx.play_vfx(self.global_position, "bullet_break")
 				disable_self()
 	
 func _on_lifetime_timeout():

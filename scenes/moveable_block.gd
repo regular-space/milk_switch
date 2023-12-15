@@ -87,7 +87,7 @@ func _physics_process(delta):
 		var collision = move_and_collide(move_vec)
 		
 		if collision:
-			print(collision.get_collider().get_class())
+			#print(collision.get_collider().get_class())
 			# If colliding into the wall no pixel snapping necessary
 			if collision.get_collider().is_class("TileMap"):
 				snap_pos = false

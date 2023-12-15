@@ -66,6 +66,7 @@ func _physics_process(delta):
 func on_hit() -> void:
 	if not Global.all_actors_disabled:
 		Audio.play_sound("bullet_hit_wall")
+		Vfx.play_vfx(self.global_position, "blood_splurt")
 	Global.all_actors_disabled = true
 
 func _on_inverse_obj_checker_body_entered(body):

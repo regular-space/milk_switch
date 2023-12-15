@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://scenes/global.tscn"
 Audio="*res://scenes/audio.tscn"
 Hud="*res://scenes/hud.tscn"
+Vfx="*res://scenes/vfx.tscn"
 
 [display]
 
