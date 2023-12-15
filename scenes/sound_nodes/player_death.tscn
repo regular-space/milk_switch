@@ -5,6 +5,7 @@
 
 [node name="PlayerDeath" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_rc6gw")
+bus = &"Sounds"
 script = ExtResource("2_1a4sw")
 
 [connection signal="finished" from="." to="." method="_on_finished"]
