@@ -9,12 +9,11 @@ script = ExtResource("1_l5ew1")
 
 [node name="Moo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_f5eem")
-volume_db = -3.0
 bus = &"Sounds"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_02j46")
-volume_db = -13.0
+volume_db = -15.0
 autoplay = true
 bus = &"Music"
 
