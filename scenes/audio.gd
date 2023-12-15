@@ -31,6 +31,7 @@ func play_sound(sound: String):
 
 func add_sound(sound):
 	var new_sound = sound.instantiate()
+	new_sound.volume_db -= 12.5
 	add_child(new_sound)
 
 
