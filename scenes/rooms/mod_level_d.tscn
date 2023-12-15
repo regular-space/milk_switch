@@ -57,6 +57,15 @@ velocity = Vector2(-3.5, 0)
 position = Vector2(366, 159)
 velocity = Vector2(-3.5, 0)
 
+[node name="SpinningBlade13" parent="." instance=ExtResource("3_sbjjr")]
+position = Vector2(366, 192)
+velocity = Vector2(-3.5, 0)
+milk_switched = true
+
+[node name="SpinningBlade14" parent="." instance=ExtResource("3_sbjjr")]
+position = Vector2(25, 192)
+velocity = Vector2(-3.5, 0)
+
 [node name="SpinningBlade9" parent="." instance=ExtResource("3_sbjjr")]
 position = Vector2(19, 137)
 velocity = Vector2(-3.5, 0)
