@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4duohe2s0dfw"]
+
+[ext_resource type="Script" path="res://spinning_blade.gd" id="1_bw8wq"]
+[ext_resource type="Texture2D" uid="uid://o2kirems4y4w" path="res://textures/spinning_blades.png" id="2_4yv5t"]
+[ext_resource type="Texture2D" uid="uid://bkl73dsf30x0y" path="res://textures/invis_spinning_blades.png" id="3_g2td0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85k0a"]
+radius = 7.07107
+
+[node name="SpinningBlade" type="AnimatableBody2D"]
+collision_layer = 4
+collision_mask = 7
+sync_to_physics = false
+script = ExtResource("1_bw8wq")
+
+[node name="BladeSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_4yv5t")
+
+[node name="BladeCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_85k0a")
+
+[node name="BladeInvisSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_g2td0")
