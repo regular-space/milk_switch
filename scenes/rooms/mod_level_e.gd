@@ -7,5 +7,5 @@ func _ready():
 
 func _on_stairs_body_entered(body):
 	if body.is_in_group("Player"):
-		var next_level = load("res://scenes/rooms/mod_level_e.tscn")
+		var next_level = load("res://scenes/rooms/end_screen.tscn")
 		Global.change_room(next_level, 1)

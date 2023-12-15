@@ -59,6 +59,8 @@ func _on_ready_room(room) -> void:
 			current_room_pack = preload("res://scenes/rooms/mod_level_c.tscn")
 		"ModLevelD":
 			current_room_pack = preload("res://scenes/rooms/mod_level_d.tscn")
+		"ModLevelE":
+			current_room_pack = preload("res://scenes/rooms/mod_level_e.tscn")
 		"EndScreen":
 			current_room_pack = preload("res://scenes/rooms/end_screen.tscn")
 	
