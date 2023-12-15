@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvo2al8gfamy3"]
+
+[ext_resource type="Script" path="res://scenes/tests/test_particle.gd" id="1_lu1t7"]
+
+[node name="TestParticle" type="GPUParticles2D"]
+script = ExtResource("1_lu1t7")
