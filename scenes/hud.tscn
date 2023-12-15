@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://db22leq3g5838"]
+[gd_scene load_steps=11 format=3 uid="uid://db22leq3g5838"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_1ysl4"]
 [ext_resource type="Shader" path="res://shaders/flip_palette.gdshader" id="2_jklpr"]
 [ext_resource type="Script" path="res://scenes/PaletteSwitcher.gd" id="3_arp20"]
+[ext_resource type="Texture2D" uid="uid://ds3t5dvqk5ll7" path="res://textures/restart_txt_controller.png" id="3_tuqpk"]
 [ext_resource type="Texture2D" uid="uid://o6jf40daw8vd" path="res://textures/restart_txt.png" id="4_8fghp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ahpws"]
@@ -68,9 +69,17 @@ _data = {
 script = ExtResource("1_1ysl4")
 palette = Array[Vector3]([Vector3(56, 23, 36), Vector3(129, 64, 45), Vector3(158, 82, 61)])
 
-[node name="RestartText" type="Sprite2D" parent="."]
+[node name="RestartText" type="Node2D" parent="."]
 position = Vector2(192, 109)
+
+[node name="RestartTextKeyboard" type="Sprite2D" parent="RestartText"]
+visible = false
 texture = ExtResource("4_8fghp")
+offset = Vector2(0, 35)
+
+[node name="RestartTextController" type="Sprite2D" parent="RestartText"]
+visible = false
+texture = ExtResource("3_tuqpk")
 offset = Vector2(0, 35)
 
 [node name="PaletteSwitcher" type="ColorRect" parent="."]

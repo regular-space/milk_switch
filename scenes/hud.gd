@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var black_screen = $BlackScreen
 @onready var restart_txt = $RestartText
 
+var controller_using := false
+
 var restart_txt_rotation_limit := deg_to_rad(10.0)
 # False is left and true is right
 var restart_txt_dir := false
@@ -24,17 +26,35 @@ func _ready():
 	black_screen.hide()
 	
 	
+func _input(event):
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		controller_using = true
+	elif event is InputEventKey:
+		controller_using = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if Global.all_actors_disabled and not Global.is_changing_scene:
 		restart_txt.visible = true
+		
+		if controller_using:
+			$RestartText/RestartTextKeyboard.visible = false
+			$RestartText/RestartTextController.visible = true
+		else:
+			$RestartText/RestartTextController.visible = false
+			$RestartText/RestartTextKeyboard.visible = true
+		
+		# Tweening code
 		var tween = create_tween()
 		tween.set_speed_scale(1)
+		
+		# Changing direction code
 		if restart_txt.rotation > 0.16:
 			restart_txt_dir = false
 		elif restart_txt.rotation < -0.16:
 			restart_txt_dir = true
+		# Changing tween to change direction here
 		if restart_txt_dir:
 			tween.tween_property(restart_txt,"rotation",restart_txt_rotation_limit,0.055).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE  )
 		else:
