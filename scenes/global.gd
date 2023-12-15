@@ -12,7 +12,7 @@ var current_room: Node2D
 var current_room_pack: Resource
 
 var player_position: Vector2
-var disable_actor = false
+var all_actors_disabled = false
 
 var is_changing_scene = false
 
@@ -23,7 +23,7 @@ func _process(delta):
 
 func change_room(destination_room, fade_speed) -> void:
 	is_changing_scene = true
-	disable_actor = true
+	all_actors_disabled = true
 	#current_room.set_processs(false)
 	current_room.set_physics_process(false)
 	var new_scene = destination_room.instantiate()
@@ -31,7 +31,7 @@ func change_room(destination_room, fade_speed) -> void:
 	
 	await Hud.animate_black_screen.animation_finished
 	current_room.queue_free()
-	disable_actor = false
+	all_actors_disabled = false
 	get_tree().root.add_child(new_scene)
 	is_changing_scene = false
 	Hud.fade_in(fade_speed)

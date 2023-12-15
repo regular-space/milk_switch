@@ -23,7 +23,7 @@ func _physics_process(delta):
 			await Hud.animate_black_screen.animation_finished
 			switch_milk_pressed.emit()
 	
-	if not Global.disable_actor:
+	if not Global.all_actors_disabled:
 		if Input.is_action_just_pressed("switch_milk") and allow_switch_milk:
 			Audio.moo.play()
 			Global.shake_screen(1, 0.2)
@@ -64,8 +64,9 @@ func _physics_process(delta):
 		#print("Collision")
 
 func on_hit() -> void:
-	Global.disable_actor = true
-	#Audio.play_sound("hello")
+	if not Global.all_actors_disabled:
+		Audio.play_sound("bullet_hit_wall")
+	Global.all_actors_disabled = true
 
 func _on_inverse_obj_checker_body_entered(body):
 	if inverse_collision_enter_count == 0:

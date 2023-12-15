@@ -27,7 +27,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.disable_actor and not Global.is_changing_scene:
+	if Global.all_actors_disabled and not Global.is_changing_scene:
 		restart_txt.visible = true
 		var tween = create_tween()
 		tween.set_speed_scale(1)

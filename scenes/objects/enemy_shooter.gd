@@ -35,7 +35,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if not Global.disable_actor:
+	if not Global.all_actors_disabled:
 		aim.look_at(Global.player_position)
 		breathing_room.look_at(Global.player_position)
 		
@@ -76,9 +76,11 @@ func _physics_process(delta):
 		texture.flip_h = false
 
 func on_hit() -> void:
+	Audio.play_sound("bullet_hit_wall")
 	self.queue_free()
 	
 func _on_crushed() -> void:
+	Audio.play_sound("bullet_hit_wall")
 	self.queue_free()
 
 func _on_palette_switched() -> void:

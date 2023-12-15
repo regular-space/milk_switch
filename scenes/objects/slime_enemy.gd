@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @export var mov_speed := 50.0
+@onready var texture = $Texture
 
 @export var movement_target: Node2D
 @export var nav_agent: NavigationAgent2D
@@ -13,6 +14,8 @@ func _ready():
 	nav_agent.target_desired_distance = 4.0
 	
 	call_deferred('actor_setup')
+	
+	texture.play("default")
 	
 func actor_setup():
 	await get_tree().physics_frame
@@ -43,7 +46,11 @@ func _physics_process(delta):
 	velocity += direction
 	nav_agent.set_velocity(velocity)
 	
-
+	# Animation
+	if direction.x < 0:
+		texture.flip_h = true
+	else:
+		texture.flip_h = false
 
 func _on_velocity_computed(safe_velocity):
 	velocity = safe_velocity
@@ -54,6 +61,7 @@ func _on_velocity_computed(safe_velocity):
 			collision.get_collider().on_hit()
 
 func on_hit() -> void:
+	Audio.play_sound("bullet_hit_wall")
 	queue_free()
 
 func _on_button_pressed(id):
