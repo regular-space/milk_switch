@@ -5,7 +5,7 @@
 
 [node name="Gunshot" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_858fa")
-volume_db = -15.0
+volume_db = -15.928
 autoplay = true
 bus = &"Sounds"
 script = ExtResource("2_62kqk")

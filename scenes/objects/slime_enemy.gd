@@ -62,6 +62,7 @@ func _on_velocity_computed(safe_velocity):
 
 func on_hit() -> void:
 	Audio.play_sound("bullet_hit_wall")
+	Vfx.play_vfx(self.global_position, "blood_splurt")
 	queue_free()
 
 func _on_button_pressed(id):

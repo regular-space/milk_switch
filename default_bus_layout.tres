@@ -1,10 +1,16 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://w4ux162nbxmo"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://w4ux162nbxmo"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_8m2vb"]
+resource_name = "Compressor"
+threshold = -14.6
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_drk1k"]
 resource_name = "Compressor"
-threshold = -15.1
+threshold = -0.5
 
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectCompressor_8m2vb")
+bus/0/effect/0/enabled = true
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false

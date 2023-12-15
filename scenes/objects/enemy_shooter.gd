@@ -77,10 +77,12 @@ func _physics_process(delta):
 
 func on_hit() -> void:
 	Audio.play_sound("bullet_hit_wall")
+	Vfx.play_vfx(self.global_position, "blood_splurt")
 	self.queue_free()
 	
 func _on_crushed() -> void:
 	Audio.play_sound("bullet_hit_wall")
+	Vfx.play_vfx(self.global_position, "blood_splurt")
 	self.queue_free()
 
 func _on_palette_switched() -> void:

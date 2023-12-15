@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvo2al8gfamy3"]
+[gd_scene load_steps=4 format=3 uid="uid://cvo2al8gfamy3"]
 
+[ext_resource type="Texture2D" uid="uid://d34p2167l2bs" path="res://textures/bullet.png" id="1_dymea"]
 [ext_resource type="Script" path="res://scenes/tests/test_particle.gd" id="1_lu1t7"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xnd14"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
 [node name="TestParticle" type="GPUParticles2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_xnd14")
+texture = ExtResource("1_dymea")
+one_shot = true
 script = ExtResource("1_lu1t7")

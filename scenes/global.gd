@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var bullet = preload("res://scenes/objects/bullet.tscn")
 
+signal room_changed
+
 @export var shake_screen_timer: Timer
 var can_shake_screen = false
 var shake_screen_intensity: float
@@ -34,6 +36,7 @@ func change_room(destination_room, fade_speed) -> void:
 	all_actors_disabled = false
 	get_tree().root.add_child(new_scene)
 	is_changing_scene = false
+	room_changed.emit()
 	Hud.fade_in(fade_speed)
 
 func _on_ready_camera(camera) -> void:
