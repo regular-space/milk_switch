@@ -3,5 +3,4 @@
 [ext_resource type="Script" path="res://scenes/vfx.gd" id="1_npc05"]
 
 [node name="VFX" type="CanvasLayer"]
-layer = 0
 script = ExtResource("1_npc05")
